@@ -17,14 +17,15 @@ RUN npm run build
 # --- Production Image ---
 FROM nginx:alpine
 
-# Remove default nginx static assets
+# Remove default static files
 RUN rm -rf /usr/share/nginx/html/*
 
-# Copy built assets to nginx public dir
+# Copy React build output
 COPY --from=build /app/dist /usr/share/nginx/html
 
-# Expose port 80
+# 👉 Copy your custom Nginx config
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 EXPOSE 80
 
-# Start nginx
 CMD ["nginx", "-g", "daemon off;"]
