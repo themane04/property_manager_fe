@@ -10,6 +10,7 @@ import {MaintenanceRequest} from "../interfaces/maintenanceRequestInterfaces.ts"
 import {RentalUnit} from "../interfaces/rentalUnitsInterfaces.ts";
 import MaintenanceRequestsForm from "../components/forms/MaintenanceRequestsForm.tsx";
 import MaintenanceRequestsList from "../components/lists/MaintenanceRequestsList.tsx";
+import {environments} from "../interfaces/environments.ts";
 
 const MaintenanceRequestsPage = () => {
     const [requests, setRequests] = useState<MaintenanceRequest[]>([])
@@ -19,8 +20,13 @@ const MaintenanceRequestsPage = () => {
     const toast = useToast()
 
     const fetchAll = () => {
-        axios.get('http://localhost:8000/api/maintenance-requests').then((res) => setRequests(res.data))
-        axios.get('http://localhost:8000/api/rental-units').then((res) => setRentalUnits(res.data))
+        axios
+            .get(`${environments.backendApiUrl}${environments.api.maintenance_requests}`)
+            .then((res) => setRequests(res.data))
+
+        axios
+            .get(`${environments.backendApiUrl}${environments.api.rental_units}`)
+            .then((res) => setRentalUnits(res.data))
     }
 
     useEffect(() => {
@@ -34,9 +40,10 @@ const MaintenanceRequestsPage = () => {
     const handleSubmit = () => {
         const payload = {...form}
 
+        const baseUrl = `${environments.backendApiUrl}${environments.api.maintenance_requests}`;
         const action = editId
-            ? axios.patch(`http://localhost:8000/api/maintenance-requests/${editId}`, payload)
-            : axios.post('http://localhost:8000/api/maintenance-requests', payload)
+            ? axios.patch(`${baseUrl}/${editId}`, payload)
+            : axios.post(baseUrl, payload)
 
         action
             .then(() => {
@@ -54,10 +61,12 @@ const MaintenanceRequestsPage = () => {
     }
 
     const handleDelete = (id: string) => {
-        axios.delete(`http://localhost:8000/api/maintenance-requests/${id}`).then(() => {
-            fetchAll()
-            showSuccessToast(toast, 'Maintenance Request successfully deleted')
-        })
+        axios
+            .delete(`${environments.backendApiUrl}${environments.api.maintenance_requests}/${id}`)
+            .then(() => {
+                fetchAll()
+                showSuccessToast(toast, 'Maintenance Request successfully deleted')
+            })
     }
 
     const handleEdit = (r: MaintenanceRequest) => {

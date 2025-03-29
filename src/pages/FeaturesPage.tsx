@@ -9,6 +9,8 @@ import InnerPageLayout from "../components/InnerPageLayout.tsx";
 import {Feature} from "../interfaces/featuresInterfaces.ts";
 import DynamicForm from "../components/forms/DynamicForm.tsx";
 import FeaturesList from "../components/lists/FeaturesList.tsx";
+import {environments} from "../interfaces/environments.ts";
+
 
 const FeaturesPage = () => {
     const [features, setFeatures] = useState<Feature[]>([])
@@ -17,9 +19,9 @@ const FeaturesPage = () => {
     const toast = useToast()
 
     const fetchFeatures = () => {
-        axios.get('http://localhost:8000/api/features').then((res) => {
-            setFeatures(res.data)
-        })
+        axios
+            .get(`${environments.backendApiUrl}${environments.api.features}`)
+            .then((res) => setFeatures(res.data))
     }
 
     useEffect(() => {
@@ -31,9 +33,10 @@ const FeaturesPage = () => {
     }
 
     const handleSubmit = () => {
+        const baseUrl = `${environments.backendApiUrl}${environments.api.features}`;
         const action = editId
-            ? axios.patch(`http://localhost:8000/api/features/${editId}`, form)
-            : axios.post('http://localhost:8000/api/features', form)
+            ? axios.patch(`${baseUrl}/${editId}`, form)
+            : axios.post(baseUrl, form)
 
         action
             .then(() => {
@@ -48,10 +51,12 @@ const FeaturesPage = () => {
     }
 
     const handleDelete = (id: string) => {
-        axios.delete(`http://localhost:8000/api/features/${id}`).then(() => {
-            fetchFeatures()
-            showInfoToast(toast, 'Feature successfully deleted')
-        })
+        axios
+            .delete(`${environments.backendApiUrl}${environments.api.features}/${id}`)
+            .then(() => {
+                fetchFeatures()
+                showInfoToast(toast, 'Feature successfully deleted')
+            })
     }
 
     const handleEdit = (feature: Feature) => {

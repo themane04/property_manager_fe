@@ -10,6 +10,7 @@ import {Payment} from "../interfaces/paymentsInterfaces.ts";
 import {RentalContract} from "../interfaces/rentalContractsInterfaces.ts";
 import PaymentsForm from "../components/forms/PaymentsForm.tsx";
 import PaymentsList from "../components/lists/PaymentsList.tsx";
+import {environments} from "../interfaces/environments.ts";
 
 const PaymentsPage = () => {
     const [payments, setPayments] = useState<Payment[]>([])
@@ -19,8 +20,13 @@ const PaymentsPage = () => {
     const toast = useToast()
 
     const fetchAll = () => {
-        axios.get('http://localhost:8000/api/payments').then((res) => setPayments(res.data))
-        axios.get('http://localhost:8000/api/rental-contracts').then((res) => setContracts(res.data))
+        axios
+            .get(`${environments.backendApiUrl}${environments.api.payments}`)
+            .then((res) => setPayments(res.data))
+
+        axios
+            .get(`${environments.backendApiUrl}${environments.api.rental_contracts}`)
+            .then((res) => setContracts(res.data))
     }
 
     useEffect(() => {
@@ -37,9 +43,10 @@ const PaymentsPage = () => {
             amount: Number(form.amount),
         }
 
+        const baseUrl = `${environments.backendApiUrl}${environments.api.payments}`;
         const action = editId
-            ? axios.patch(`http://localhost:8000/api/payments/${editId}`, payload)
-            : axios.post('http://localhost:8000/api/payments', payload)
+            ? axios.patch(`${baseUrl}/${editId}`, payload)
+            : axios.post(baseUrl, payload)
 
         action
             .then(() => {
@@ -54,10 +61,12 @@ const PaymentsPage = () => {
     }
 
     const handleDelete = (id: string) => {
-        axios.delete(`http://localhost:8000/api/payments/${id}`).then(() => {
-            fetchAll()
-            showInfoToast(toast, 'Payment successfully deleted')
-        })
+        axios
+            .delete(`${environments.backendApiUrl}${environments.api.payments}/${id}`)
+            .then(() => {
+                fetchAll()
+                showInfoToast(toast, 'Payment successfully deleted')
+            })
     }
 
     const handleEdit = (p: Payment) => {

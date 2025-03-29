@@ -9,6 +9,7 @@ import InnerPageLayout from "../components/InnerPageLayout.tsx";
 import {Property} from "../interfaces/propertiesInterfaces.ts";
 import DynamicForm from "../components/forms/DynamicForm.tsx";
 import PropertiesList from "../components/lists/PropertiesList.tsx";
+import {environments} from "../interfaces/environments.ts";
 
 const PropertiesPage = () => {
     const [properties, setProperties] = useState<Property[]>([])
@@ -17,9 +18,9 @@ const PropertiesPage = () => {
     const toast = useToast()
 
     const fetchProperties = () => {
-        axios.get('http://localhost:8000/api/properties').then((res) => {
-            setProperties(res.data)
-        })
+        axios
+            .get(`${environments.backendApiUrl}${environments.api.properties}`)
+            .then((res) => setProperties(res.data))
     }
 
     useEffect(() => {
@@ -38,9 +39,10 @@ const PropertiesPage = () => {
             park_spaces_amount: Number(form.park_spaces_amount),
         }
 
+        const baseUrl = `${environments.backendApiUrl}${environments.api.properties}`;
         const action = editId
-            ? axios.patch(`http://localhost:8000/api/properties/${editId}`, payload)
-            : axios.post('http://localhost:8000/api/properties', payload)
+            ? axios.patch(`${baseUrl}/${editId}`, payload)
+            : axios.post(baseUrl, payload)
 
         action
             .then(() => {
@@ -55,10 +57,12 @@ const PropertiesPage = () => {
     }
 
     const handleDelete = (id: string) => {
-        axios.delete(`http://localhost:8000/api/properties/${id}`).then(() => {
-            fetchProperties()
-            showInfoToast(toast, 'Property successfully deleted')
-        })
+        axios
+            .delete(`${environments.backendApiUrl}${environments.api.properties}/${id}`)
+            .then(() => {
+                fetchProperties()
+                showInfoToast(toast, 'Property successfully deleted')
+            })
     }
 
     const handleEdit = (p: Property) => {

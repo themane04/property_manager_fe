@@ -12,6 +12,7 @@ import {Property} from "../interfaces/propertiesInterfaces.ts";
 import {Feature} from "../interfaces/featuresInterfaces.ts";
 import RentalUnitsForm from "../components/forms/RentalUnitsForm.tsx";
 import RentalUnitsList from "../components/lists/RentalUnitsList.tsx";
+import {environments} from "../interfaces/environments.ts";
 
 const RentalUnitsPage = () => {
     const [units, setUnits] = useState<RentalUnit[]>([])
@@ -22,23 +23,18 @@ const RentalUnitsPage = () => {
     const [properties, setProperties] = useState<Property[]>([])
     const [features, setFeatures] = useState<Feature[]>([])
 
-    useEffect(() => {
-        fetchUnits()
-
-        axios.get('http://localhost:8000/api/tenants').then(res => setTenants(res.data))
-        axios.get('http://localhost:8000/api/properties').then(res => setProperties(res.data))
-        axios.get('http://localhost:8000/api/features').then(res => setFeatures(res.data))
-    }, [])
-
-
     const fetchUnits = () => {
-        axios.get('http://localhost:8000/api/rental-units').then((res) => {
-            setUnits(res.data)
-        })
+        axios
+            .get(`${environments.backendApiUrl}${environments.api.rental_units}`)
+            .then((res) => setUnits(res.data))
     }
 
     useEffect(() => {
         fetchUnits()
+
+        axios.get(`${environments.backendApiUrl}${environments.api.tenants}`).then(res => setTenants(res.data))
+        axios.get(`${environments.backendApiUrl}${environments.api.properties}`).then(res => setProperties(res.data))
+        axios.get(`${environments.backendApiUrl}${environments.api.features}`).then(res => setFeatures(res.data))
     }, [])
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -53,9 +49,10 @@ const RentalUnitsPage = () => {
             rent: Number(form.rent),
         }
 
+        const baseUrl = `${environments.backendApiUrl}${environments.api.rental_units}`;
         const action = editId
-            ? axios.patch(`http://localhost:8000/api/rental-units/${editId}`, payload)
-            : axios.post('http://localhost:8000/api/rental-units', payload)
+            ? axios.patch(`${baseUrl}/${editId}`, payload)
+            : axios.post(baseUrl, payload)
 
         action
             .then(() => {
@@ -73,10 +70,12 @@ const RentalUnitsPage = () => {
     }
 
     const handleDelete = (id: string) => {
-        axios.delete(`http://localhost:8000/api/rental-units/${id}`).then(() => {
-            fetchUnits()
-            showInfoToast(toast, 'Rental Unit successfully deleted')
-        })
+        axios
+            .delete(`${environments.backendApiUrl}${environments.api.rental_units}/${id}`)
+            .then(() => {
+                fetchUnits()
+                showInfoToast(toast, 'Rental Unit successfully deleted')
+            })
     }
 
     const handleEdit = (unit: RentalUnit) => {

@@ -11,6 +11,7 @@ import {RentalContract} from "../interfaces/rentalContractsInterfaces.ts";
 import {RentalUnit} from "../interfaces/rentalUnitsInterfaces.ts";
 import RentalContractsForm from "../components/forms/RentalContractsForm.tsx";
 import RentalContractsList from "../components/lists/RentalContractsList.tsx";
+import {environments} from "../interfaces/environments.ts";
 
 
 const RentalContractsPage = () => {
@@ -24,9 +25,9 @@ const RentalContractsPage = () => {
     const toast = useToast()
 
     const fetchAll = () => {
-        axios.get('http://localhost:8000/api/rental-contracts').then((res) => setContracts(res.data))
-        axios.get('http://localhost:8000/api/tenants').then((res) => setTenants(res.data))
-        axios.get('http://localhost:8000/api/rental-units').then((res) => setRentalUnits(res.data))
+        axios.get(`${environments.backendApiUrl}${environments.api.rental_contracts}`).then((res) => setContracts(res.data))
+        axios.get(`${environments.backendApiUrl}${environments.api.tenants}`).then((res) => setTenants(res.data))
+        axios.get(`${environments.backendApiUrl}${environments.api.rental_units}`).then((res) => setRentalUnits(res.data))
     }
 
     useEffect(() => {
@@ -51,7 +52,6 @@ const RentalContractsPage = () => {
         }
     };
 
-
     const handleSubmit = () => {
         const payload = {
             tenant_id: form.tenant.id,
@@ -63,9 +63,10 @@ const RentalContractsPage = () => {
             status: form.status,
         };
 
+        const baseUrl = `${environments.backendApiUrl}${environments.api.rental_contracts}`;
         const action = editId
-            ? axios.patch(`http://localhost:8000/api/rental-contracts/${editId}`, payload)
-            : axios.post('http://localhost:8000/api/rental-contracts', payload)
+            ? axios.patch(`${baseUrl}/${editId}`, payload)
+            : axios.post(baseUrl, payload)
 
         action
             .then(() => {
@@ -83,10 +84,12 @@ const RentalContractsPage = () => {
     }
 
     const handleDelete = (id: string) => {
-        axios.delete(`http://localhost:8000/api/rental-contracts/${id}`).then(() => {
-            fetchAll()
-            showInfoToast(toast, 'Rental Contract successfully deleted')
-        })
+        axios
+            .delete(`${environments.backendApiUrl}${environments.api.rental_contracts}/${id}`)
+            .then(() => {
+                fetchAll()
+                showInfoToast(toast, 'Rental Contract successfully deleted')
+            })
     }
 
     const handleEdit = (c: RentalContract) => {

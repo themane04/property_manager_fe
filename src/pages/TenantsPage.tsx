@@ -9,6 +9,7 @@ import PageLayout from "../components/PageLayout.tsx";
 import InnerPageLayout from "../components/InnerPageLayout.tsx";
 import DynamicForm from "../components/forms/DynamicForm.tsx";
 import TenantsList from "../components/lists/TenantsList.tsx";
+import {environments} from "../interfaces/environments.ts";
 
 const TenantsPage = () => {
     const [tenants, setTenants] = useState<Tenant[]>([])
@@ -17,7 +18,7 @@ const TenantsPage = () => {
     const toast = useToast()
 
     const fetchTenants = () => {
-        axios.get('http://localhost:8000/api/tenants').then(res => {
+        axios.get(`${environments.backendApiUrl}${environments.api.tenants}`).then(res => {
             setTenants(res.data)
         })
     }
@@ -31,9 +32,10 @@ const TenantsPage = () => {
     }
 
     const handleSubmit = () => {
+        const baseUrl = `${environments.backendApiUrl}${environments.api.tenants}`;
         const action = editId
-            ? axios.patch(`http://localhost:8000/api/tenants/${editId}`, form)
-            : axios.post('http://localhost:8000/api/tenants', form)
+            ? axios.patch(`${baseUrl}/${editId}`, form)
+            : axios.post(baseUrl, form)
 
         action
             .then(() => {
@@ -48,7 +50,7 @@ const TenantsPage = () => {
     }
 
     const handleDelete = (id: string) => {
-        axios.delete(`http://localhost:8000/api/tenants/${id}`).then(() => {
+        axios.delete(`${environments.backendApiUrl}${environments.api.tenants}/${id}`).then(() => {
             fetchTenants()
             showInfoToast(toast, 'Tenant successfully deleted')
         })
