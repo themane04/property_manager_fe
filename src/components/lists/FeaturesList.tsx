@@ -2,6 +2,11 @@ import {FeaturesListProps} from "../../interfaces/featuresInterfaces.ts";
 import ListTitle from "./ListTitle.tsx";
 import {Box, Text, VStack} from "@chakra-ui/react";
 import ListActionButtons from "./ListActionButtons.tsx";
+import {
+    listComponentBoxStyle,
+    listComponentMainTextStyle,
+    listComponentVStackStyle
+} from "../../styles/ListComponentStyles.ts";
 
 const FeaturesList = ({
                           title,
@@ -12,10 +17,13 @@ const FeaturesList = ({
     return (
         <>
             <ListTitle title={title}/>
-            <VStack spacing={4} align="stretch">
+            <VStack sx={listComponentVStackStyle}>
                 {features.map((f) => (
-                    <Box key={f.id} p={4} borderWidth="1px" borderRadius="lg" shadow="sm" bg="gray.50">
-                        <Text fontWeight="semibold">{f.name}</Text>
+                    <Box
+                        key={f.id}
+                        sx={listComponentBoxStyle}
+                    >
+                        <Text sx={listComponentMainTextStyle}>{f.name}</Text>
                         <ListActionButtons
                             item={f}
                             handleEdit={handleEdit}

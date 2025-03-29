@@ -2,6 +2,12 @@ import {Box, Text, VStack} from '@chakra-ui/react';
 import {RentalContractsListProps} from "../../interfaces/rentalContractsInterfaces.ts";
 import ListTitle from "./ListTitle.tsx";
 import ListActionButtons from "./ListActionButtons.tsx";
+import {
+    listComponentBoxStyle,
+    listComponentMainTextStyle,
+    listComponentTextStyle,
+    listComponentVStackStyle
+} from "../../styles/ListComponentStyles.ts";
 
 const RentalContractsList = ({
                                  title,
@@ -12,30 +18,25 @@ const RentalContractsList = ({
     return (
         <>
             <ListTitle title={title}/>
-            <VStack align="stretch" spacing={4}>
+            <VStack sx={listComponentVStackStyle}>
                 {contracts.map((contract) => (
                     <Box
                         key={contract.id}
-                        p={5}
-                        borderWidth="1px"
-                        borderRadius="lg"
-                        shadow="sm"
-                        bg="gray.50"
-                        _hover={{shadow: 'md'}}
+                        sx={listComponentBoxStyle}
                     >
-                        <Text fontWeight="bold" fontSize="lg" color="gray.800">
+                        <Text sx={listComponentMainTextStyle}>
                             📄 Contract ({contract.status})
                         </Text>
-                        <Text fontSize="sm" color="gray.600">
+                        <Text sx={listComponentTextStyle}>
                             🧑 Tenant ID: {contract.tenant.id}
                         </Text>
-                        <Text fontSize="sm" color="gray.600">
+                        <Text sx={listComponentTextStyle}>
                             🏠 Unit ID: {contract.rental_unit.id}
                         </Text>
-                        <Text fontSize="sm" color="gray.600">
+                        <Text sx={listComponentTextStyle}>
                             📅 From: {contract.start_of_contract} – To: {contract.end_of_contract}
                         </Text>
-                        <Text fontSize="sm" color="gray.600">
+                        <Text sx={listComponentTextStyle}>
                             💰 Rent: {contract.rent} CHF | Deposit: {contract.deposit} CHF
                         </Text>
                         <ListActionButtons

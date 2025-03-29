@@ -2,44 +2,36 @@ import {Box, Text, VStack} from "@chakra-ui/react";
 import {TenantsListProps} from "../../interfaces/tenantInterfaces.ts";
 import ListActionButtons from "./ListActionButtons.tsx";
 import ListTitle from "./ListTitle.tsx";
+import {
+    listComponentBoxStyle,
+    listComponentMainTextStyle,
+    listComponentTextStyle,
+    listComponentVStackStyle
+} from "../../styles/ListComponentStyles.ts";
 
 const TenantsList = ({
                          title,
                          tenants,
                          handleEdit,
-                         handleDelete
+                         handleDelete,
                      }: TenantsListProps) => {
+
     return (
         <>
             <ListTitle title={title}/>
-            <VStack align="stretch" spacing={4}>
-                {tenants.map(tenant => (
+            <VStack sx={listComponentVStackStyle}>
+                {tenants.map((tenant) => (
                     <Box
                         key={tenant.id}
-                        p={5}
-                        borderWidth="1px"
-                        borderRadius="lg"
-                        shadow="sm"
-                        bg="gray.50"
-                        _hover={{shadow: 'md'}}
+                        sx={listComponentBoxStyle}
                     >
-                        <Text
-                            fontWeight="bold"
-                            fontSize="lg"
-                            color="gray.800"
-                        >
+                        <Text sx={listComponentMainTextStyle}>
                             {tenant.first_name} {tenant.last_name}
                         </Text>
-                        <Text
-                            fontSize="sm"
-                            color="gray.600"
-                        >
+                        <Text sx={listComponentTextStyle}>
                             📧 {tenant.email}
                         </Text>
-                        <Text
-                            fontSize="sm"
-                            color="gray.600"
-                        >
+                        <Text sx={listComponentTextStyle}>
                             📍 {tenant.street} {tenant.house_number}, {tenant.postal_code} {tenant.city}
                         </Text>
                         <ListActionButtons
@@ -52,6 +44,7 @@ const TenantsList = ({
             </VStack>
         </>
     );
-}
+};
+
 
 export default TenantsList;

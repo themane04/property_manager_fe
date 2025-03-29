@@ -1,6 +1,7 @@
-import {FormControl, FormLabel, Input,} from '@chakra-ui/react';
+import {FormControl, FormLabel, Input, VStack,} from '@chakra-ui/react';
 import {DynamicFormProps} from "../../interfaces/commonInterfaces.ts";
 import FormActionButton from "./FormActionButton.tsx";
+import {formInputStyle, formLabelStyle, formVStackStyle} from "../../styles/FormComponentStyles.ts";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const DynamicForm = <T extends Record<string, any>>({
@@ -10,10 +11,10 @@ const DynamicForm = <T extends Record<string, any>>({
                                                         editId,
                                                     }: DynamicFormProps<T>) => {
     return (
-        <>
+        <VStack sx={formVStackStyle}>
             {Object.entries(data).map(([key, value]) => (
                 <FormControl key={key} isRequired>
-                    <FormLabel textTransform="capitalize">
+                    <FormLabel sx={formLabelStyle}>
                         {key.replace(/_/g, ' ')}
                     </FormLabel>
                     <Input
@@ -21,14 +22,12 @@ const DynamicForm = <T extends Record<string, any>>({
                         name={key}
                         value={value}
                         onChange={onChange}
+                        sx={formInputStyle}
                     />
                 </FormControl>
             ))}
-            <FormActionButton
-                handleSubmit={onSubmit}
-                editId={editId}
-            />
-        </>
+            <FormActionButton handleSubmit={onSubmit} editId={editId}/>
+        </VStack>
     );
 };
 

@@ -2,6 +2,11 @@ import ListTitle from "./ListTitle.tsx";
 import {Box, Text, VStack} from "@chakra-ui/react";
 import {PropertiesListProps} from "../../interfaces/propertiesInterfaces.ts";
 import ListActionButtons from "./ListActionButtons.tsx";
+import {
+    listComponentBoxStyle,
+    listComponentMainTextStyle,
+    listComponentTextStyle
+} from "../../styles/ListComponentStyles.ts";
 
 const PropertiesList = ({
                             title,
@@ -16,26 +21,18 @@ const PropertiesList = ({
                 {properties.map((properties) => (
                     <Box
                         key={properties.id}
-                        p={5}
-                        borderWidth="1px"
-                        borderRadius="lg"
-                        shadow="sm"
-                        w="100%"
-                        bg="gray.50"
+                        sx={listComponentBoxStyle}
                     >
-                        <Text
-                            fontWeight="bold"
-                            fontSize="lg"
-                        >
+                        <Text sx={listComponentMainTextStyle}>
                             {properties.name} – {properties.street} {properties.house_number},
                             {properties.postal_code} {properties.city}
                         </Text>
-                        <Text fontSize="sm">
+                        <Text sx={listComponentTextStyle}>
                             🏗️ Year of construction: {properties.year_of_construction} |
                             Flats: {properties.flats_amount} |
                             Park Spaces: {properties.park_spaces_amount}
                         </Text>
-                        <Text fontSize="sm">👤 Owner: {properties.owner}</Text>
+                        <Text sx={listComponentTextStyle}>👤 Owner: {properties.owner}</Text>
                         <ListActionButtons
                             item={properties}
                             handleEdit={handleEdit}
