@@ -13,7 +13,12 @@ const PaymentsForm = ({
         <>
             <FormControl isRequired>
                 <FormLabel>Rental Contract</FormLabel>
-                <Select name="rental_contract" value={form.rental_contract} onChange={handleChange}>
+                <Select
+                    name="rental_contract"
+                    value={form.rental_contract}
+                    onChange={handleChange}
+                    placeholder="Select a contract"
+                >
                     {contracts.map((c) => (
                         <option key={c.id} value={c.id}>
                             Contract {c.id.slice(-5)} – {c.status}
@@ -34,7 +39,12 @@ const PaymentsForm = ({
 
             <FormControl isRequired>
                 <FormLabel>Status</FormLabel>
-                <Select name="status" value={form.status} onChange={handleChange}>
+                <Select
+                    name="status"
+                    value={form.status}
+                    onChange={handleChange}
+                    placeholder="Select a status"
+                >
                     <option value="paid">paid</option>
                     <option value="open">open</option>
                     <option value="failed">failed</option>
@@ -44,7 +54,12 @@ const PaymentsForm = ({
 
             <FormControl isRequired>
                 <FormLabel>Payment Method</FormLabel>
-                <Select name="payment_method" value={form.payment_method} onChange={handleChange}>
+                <Select
+                    name="payment_method"
+                    value={form.payment_method}
+                    onChange={handleChange}
+                    placeholder="Select a payment method"
+                >
                     <option value="Bank transfer">Bank transfer</option>
                     <option value="Credit card">Credit card</option>
                     <option value="PayPal">PayPal</option>

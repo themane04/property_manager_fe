@@ -18,7 +18,7 @@ const RentalContractsForm = ({
                     name="tenant"
                     value={form.tenant.first_name}
                     onChange={handleChange}
-                    placeholder="Select tenant"
+                    placeholder="Select a tenant"
                 >
                     {tenants.map((t) => (
                         <option key={t.id} value={t.id}>
@@ -34,7 +34,7 @@ const RentalContractsForm = ({
                     name="rental_unit"
                     value={form.rental_unit.designation}
                     onChange={handleChange}
-                    placeholder="Select rental unit"
+                    placeholder="Select a rental unit"
                 >
                     {rentalUnits.map((u) => (
                         <option key={u.id} value={u.id}>
@@ -72,7 +72,7 @@ const RentalContractsForm = ({
                     name="status"
                     value={form.status}
                     onChange={handleChange}
-                    placeholder="Select status"
+                    placeholder="Select a status"
                 >
                     <option value="active">active</option>
                     <option value="ended">ended</option>

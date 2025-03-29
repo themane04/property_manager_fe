@@ -21,7 +21,12 @@ const RentalUnitsForm = ({
 
             <FormControl isRequired>
                 <FormLabel>Type</FormLabel>
-                <Select name="type" value={form.type} onChange={handleChange}>
+                <Select
+                    name="type"
+                    value={form.type}
+                    onChange={handleChange}
+                    placeholder="Select a type"
+                >
                     <option value="Flat">Flat</option>
                     <option value="Office">Office</option>
                     <option value="Shop">Shop</option>
@@ -52,7 +57,12 @@ const RentalUnitsForm = ({
 
             <FormControl isRequired>
                 <FormLabel>Status</FormLabel>
-                <Select name="status" value={form.status} onChange={handleChange}>
+                <Select
+                    name="status"
+                    value={form.status}
+                    onChange={handleChange}
+                    placeholder="Select a status"
+                >
                     <option value="rented">rented</option>
                     <option value="free">free</option>
                 </Select>
@@ -60,7 +70,12 @@ const RentalUnitsForm = ({
 
             <FormControl>
                 <FormLabel>Tenant</FormLabel>
-                <Select name="tenant" value={form.tenant || ''} onChange={handleChange} placeholder="No tenant">
+                <Select
+                    name="tenant"
+                    value={form.tenant || ''}
+                    onChange={handleChange}
+                    placeholder="Select a tenant"
+                >
                     {tenants.map(t => (
                         <option key={t.id} value={t.id}>
                             {t.first_name} {t.last_name}

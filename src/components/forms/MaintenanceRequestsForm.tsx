@@ -17,7 +17,7 @@ const MaintenanceRequestsForm = ({
                     name="rental_unit"
                     value={form.rental_unit}
                     onChange={handleChange}
-                    placeholder="Select rental unit"
+                    placeholder="Select a rental unit"
                 >
                     {rentalUnits.map((u) => (
                         <option key={u.id} value={u.id}>
@@ -34,7 +34,12 @@ const MaintenanceRequestsForm = ({
 
             <FormControl isRequired>
                 <FormLabel>Status</FormLabel>
-                <Select name="status" value={form.status} onChange={handleChange}>
+                <Select
+                    name="status"
+                    value={form.status}
+                    onChange={handleChange}
+                    placeholder="Select a status"
+                >
                     <option value="open">open</option>
                     <option value="in progress">in progress</option>
                     <option value="done">done</option>

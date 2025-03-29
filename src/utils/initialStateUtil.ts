@@ -36,12 +36,12 @@ export const initialFeature: Omit<Feature, 'id'> = {
 
 export const initialUnit: Omit<RentalUnit, 'id'> = {
     designation: '',
-    type: 'Flat',
+    type: '',
     area_m2: '',
     number_of_rooms: '',
     rent: '',
     available_from: '',
-    status: 'free',
+    status: '',
     property: '',
     tenant: '',
     features: [],
@@ -54,21 +54,21 @@ export const initialContract: Omit<RentalContract, 'id'> = {
     end_of_contract: '',
     rent: '',
     deposit: '',
-    status: 'active',
+    status: '',
 };
 
 export const initialPayment: Omit<Payment, 'id'> = {
     rental_contract: '',
     date: '',
     amount: '',
-    status: 'paid',
-    payment_method: 'Bank transfer',
+    status: '',
+    payment_method: '',
 }
 
 export const initialRequest: Omit<MaintenanceRequest, 'id'> = {
     rental_unit: '',
     description: '',
-    status: 'open',
+    status: '',
     created_at: '',
     assigned_craftsman: '',
 }
