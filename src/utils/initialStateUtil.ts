@@ -48,14 +48,14 @@ export const initialUnit: Omit<RentalUnit, 'id'> = {
 }
 
 export const initialContract: Omit<RentalContract, 'id'> = {
-    tenant: '',
-    rental_unit: '',
+    tenant: {id: '', ...initialTenant},
+    rental_unit: {id: '', ...initialUnit},
     start_of_contract: '',
     end_of_contract: '',
     rent: '',
     deposit: '',
     status: 'active',
-}
+};
 
 export const initialPayment: Omit<Payment, 'id'> = {
     rental_contract: '',

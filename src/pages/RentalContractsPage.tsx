@@ -9,8 +9,8 @@ import PageLayout from "../components/PageLayout.tsx";
 import InnerPageLayout from "../components/InnerPageLayout.tsx";
 import {RentalContract} from "../interfaces/rentalContractsInterfaces.ts";
 import {RentalUnit} from "../interfaces/rentalUnitsInterfaces.ts";
-import ItemList from "../components/ItemList.tsx";
 import RentalContractsForm from "../components/forms/RentalContractsForm.tsx";
+import RentalContractsList from "../components/lists/RentalContractsList.tsx";
 
 
 const RentalContractsPage = () => {
@@ -34,15 +34,34 @@ const RentalContractsPage = () => {
     }, [])
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        setForm((prev) => ({...prev, [e.target.name]: e.target.value}))
-    }
+        const {name, value} = e.target;
+
+        if (name === "tenant") {
+            const selectedTenant = tenants.find((t) => t.id === value);
+            if (selectedTenant) {
+                setForm((prev) => ({...prev, tenant: selectedTenant}));
+            }
+        } else if (name === "rental_unit") {
+            const selectedUnit = rentalUnits.find((u) => u.id === value);
+            if (selectedUnit) {
+                setForm((prev) => ({...prev, rental_unit: selectedUnit}));
+            }
+        } else {
+            setForm((prev) => ({...prev, [name]: value}));
+        }
+    };
+
 
     const handleSubmit = () => {
         const payload = {
-            ...form,
+            tenant_id: form.tenant.id,
+            rental_unit_id: form.rental_unit.id,
+            start_of_contract: form.start_of_contract,
+            end_of_contract: form.end_of_contract,
             rent: Number(form.rent),
             deposit: Number(form.deposit),
-        }
+            status: form.status,
+        };
 
         const action = editId
             ? axios.patch(`http://localhost:8000/api/rental-contracts/${editId}`, payload)
@@ -89,15 +108,15 @@ const RentalContractsPage = () => {
                     />
                 </InnerPageLayout>
 
-                <ItemList
+                <RentalContractsList
                     title={"📋 List of Rental Contracts"}
-                    data={contracts}
-                    onEdit={handleEdit}
-                    onDelete={handleDelete}
+                    contracts={contracts}
+                    handleEdit={handleEdit}
+                    handleDelete={handleDelete}
                 />
             </PageLayout>
         </>
     )
 }
 
-export default RentalContractsPage
+export default RentalContractsPage;
