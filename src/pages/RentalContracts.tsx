@@ -13,16 +13,18 @@ import {
 } from '@chakra-ui/react'
 import {useEffect, useState} from 'react'
 import axios from 'axios'
-import {Contract, RentalUnit, Tenant} from "../interfaces/interfaces.ts";
+import {Tenant} from "../interfaces/tenant.interfaces.ts";
 import {initialContract} from "../utils/initial-state.util.ts";
 import {showErrorToast, showInfoToast, showSuccessToast} from "../utils/toast.util.ts";
 import PageLayout from "../components/PageLayout.tsx";
 import * as React from "react";
 import InnerPageLayout from "../components/InnerPageLayout.tsx";
+import {RentalContract} from "../interfaces/contracts.interfaces.ts";
+import {RentalUnit} from "../interfaces/rental-units.interfaces.ts";
 
 
 const RentalContractsPage = () => {
-    const [contracts, setContracts] = useState<Contract[]>([])
+    const [contracts, setContracts] = useState<RentalContract[]>([])
     const [form, setForm] = useState(initialContract)
     const [editId, setEditId] = useState<string | null>(null)
 
@@ -75,7 +77,7 @@ const RentalContractsPage = () => {
         })
     }
 
-    const handleEdit = (c: Contract) => {
+    const handleEdit = (c: RentalContract) => {
         setForm({...c})
         setEditId(c.id)
     }
@@ -115,7 +117,8 @@ const RentalContractsPage = () => {
 
                         <FormControl isRequired>
                             <FormLabel>Vertragsende</FormLabel>
-                            <Input type="date" name="vertragsende" value={form.end_of_contract} onChange={handleChange}/>
+                            <Input type="date" name="vertragsende" value={form.end_of_contract}
+                                   onChange={handleChange}/>
                         </FormControl>
 
                         <FormControl isRequired>

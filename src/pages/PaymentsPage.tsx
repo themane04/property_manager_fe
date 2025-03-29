@@ -13,18 +13,19 @@ import {
 } from '@chakra-ui/react'
 import {useEffect, useState} from 'react'
 import axios from 'axios'
-import {Contract, Payment} from "../interfaces/interfaces.ts";
 import * as React from "react";
 import {initialPayment} from "../utils/initial-state.util.ts";
 import {showErrorToast, showInfoToast, showSuccessToast} from "../utils/toast.util.ts";
 import PageLayout from "../components/PageLayout.tsx";
 import InnerPageLayout from "../components/InnerPageLayout.tsx";
+import {Payment} from "../interfaces/payments.interfaces.ts";
+import {RentalContract} from "../interfaces/contracts.interfaces.ts";
 
 const PaymentsPage = () => {
     const [payments, setPayments] = useState<Payment[]>([])
     const [form, setForm] = useState(initialPayment)
     const [editId, setEditId] = useState<string | null>(null)
-    const [contracts, setContracts] = useState<Contract[]>([])
+    const [contracts, setContracts] = useState<RentalContract[]>([])
     const toast = useToast()
 
     const fetchAll = () => {

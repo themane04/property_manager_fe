@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react'
 import {useEffect, useState} from 'react'
 import axios from 'axios'
-import {Tenant} from "../interfaces/interfaces.ts";
+import {Tenant} from "../interfaces/tenant.interfaces.ts";
 import * as React from "react";
 import {initialTenant} from "../utils/initial-state.util.ts";
 import {showErrorToast, showInfoToast, showSuccessToast} from "../utils/toast.util.ts";

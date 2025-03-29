@@ -6,7 +6,7 @@ import {
     Property,
     RentalUnit,
     Tenant
-} from "../interfaces/interfaces.ts";
+} from "../interfaces/tenant.interfaces.ts";
 
 export const initialTenant: Omit<Tenant, 'id'> = {
     first_name: '',

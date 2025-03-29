@@ -12,12 +12,12 @@ import {
 } from '@chakra-ui/react'
 import {useEffect, useState} from 'react'
 import axios from 'axios'
-import {Property} from "../interfaces/interfaces.ts";
 import {initialProperty} from "../utils/initial-state.util.ts";
 import {showErrorToast, showInfoToast, showSuccessToast} from "../utils/toast.util.ts";
 import PageLayout from "../components/PageLayout.tsx";
 import * as React from "react";
 import InnerPageLayout from "../components/InnerPageLayout.tsx";
+import {Property} from "../interfaces/properties.interfaces.ts";
 
 const PropertiesPage = () => {
     const [properties, setProperties] = useState<Property[]>([])
