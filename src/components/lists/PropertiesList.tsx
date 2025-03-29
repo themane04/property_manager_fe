@@ -1,6 +1,7 @@
 import ListTitle from "./ListTitle.tsx";
-import {Box, Button, HStack, Text, VStack} from "@chakra-ui/react";
+import {Box, Text, VStack} from "@chakra-ui/react";
 import {PropertiesListProps} from "../../interfaces/propertiesInterfaces.ts";
+import ListActionButtons from "./ListActionButtons.tsx";
 
 const PropertiesList = ({
                             title,
@@ -22,14 +23,11 @@ const PropertiesList = ({
                             Park Spaces: {p.park_spaces_amount}
                         </Text>
                         <Text fontSize="sm">👤 Owner: {p.owner}</Text>
-                        <HStack mt={3}>
-                            <Button size="sm" colorScheme="teal" onClick={() => handleEdit(p)}>
-                                Edit
-                            </Button>
-                            <Button size="sm" colorScheme="red" onClick={() => handleDelete(p.id)}>
-                                Delete
-                            </Button>
-                        </HStack>
+                        <ListActionButtons
+                            item={p}
+                            handleEdit={handleEdit}
+                            handleDelete={handleDelete}
+                        />
                     </Box>
                 ))}
             </VStack>

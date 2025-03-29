@@ -7,8 +7,8 @@ import {showErrorToast, showInfoToast, showSuccessToast} from "../utils/toastUti
 import PageLayout from "../components/PageLayout.tsx";
 import InnerPageLayout from "../components/InnerPageLayout.tsx";
 import {Feature} from "../interfaces/featuresInterfaces.ts";
-import ItemList from "../components/ItemList.tsx";
 import DynamicForm from "../components/forms/DynamicForm.tsx";
+import FeaturesList from "../components/lists/FeaturesList.tsx";
 
 const FeaturesPage = () => {
     const [features, setFeatures] = useState<Feature[]>([])
@@ -71,11 +71,11 @@ const FeaturesPage = () => {
                     />
                 </InnerPageLayout>
 
-                <ItemList
-                    title={"📋 List of Features"}
-                    data={features}
-                    onEdit={handleEdit}
-                    onDelete={handleDelete}
+                <FeaturesList
+                    title={"📋 List of Tenants"}
+                    features={features}
+                    handleEdit={handleEdit}
+                    handleDelete={handleDelete}
                 />
             </PageLayout>
         </>

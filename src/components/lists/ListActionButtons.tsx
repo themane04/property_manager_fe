@@ -1,17 +1,18 @@
 import {Button, HStack} from "@chakra-ui/react";
 import {ListActionButtonsProps} from "../../interfaces/commonInterfaces.ts";
 
-const ListActionButtons = ({
-                               t,
-                               handleEdit,
-                               handleDelete
-                           }: ListActionButtonsProps) => {
+
+const ListActionButtons = <T extends { id: string }>({
+                                                         item,
+                                                         handleEdit,
+                                                         handleDelete,
+                                                     }: ListActionButtonsProps<T>) => {
     return (
         <HStack mt={3}>
-            <Button size="sm" colorScheme="teal" onClick={() => handleEdit(t)}>
+            <Button size="sm" colorScheme="teal" onClick={() => handleEdit(item)}>
                 Edit
             </Button>
-            <Button size="sm" colorScheme="red" onClick={() => handleDelete(t.id)}>
+            <Button size="sm" colorScheme="red" onClick={() => handleDelete(item.id)}>
                 Delete
             </Button>
         </HStack>

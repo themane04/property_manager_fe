@@ -1,10 +1,9 @@
 import {ChangeEvent} from "react";
-import {Tenant} from "./tenantInterfaces.ts";
 
-export interface ListActionButtonsProps {
-    t: Tenant
-    handleEdit: (t: Tenant) => void
-    handleDelete: (id: string) => void
+export interface ListActionButtonsProps<T extends { id: string }> {
+    item: T;
+    handleEdit: (item: T) => void;
+    handleDelete: (id: string) => void;
 }
 
 export interface FormActionButtonProps {

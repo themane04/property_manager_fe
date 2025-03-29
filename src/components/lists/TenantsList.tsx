@@ -33,7 +33,7 @@ const TenantsList = ({
                             📍 {t.street} {t.house_number}, {t.postal_code} {t.city}
                         </Text>
                         <ListActionButtons
-                            t={t}
+                            item={t}
                             handleEdit={handleEdit}
                             handleDelete={handleDelete}
                         />
