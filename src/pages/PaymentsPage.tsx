@@ -8,7 +8,7 @@ import PageLayout from "../components/PageLayout.tsx";
 import InnerPageLayout from "../components/InnerPageLayout.tsx";
 import {Payment} from "../interfaces/paymentsInterfaces.ts";
 import {RentalContract} from "../interfaces/rentalContractsInterfaces.ts";
-import ItemList from "../components/UpdateDeleteButtons.tsx";
+import ItemList from "../components/ItemList.tsx";
 import PaymentsForm from "../components/forms/PaymentsForm.tsx";
 
 const PaymentsPage = () => {

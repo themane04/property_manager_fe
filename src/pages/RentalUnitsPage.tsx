@@ -10,7 +10,7 @@ import InnerPageLayout from "../components/InnerPageLayout.tsx";
 import {RentalUnit} from "../interfaces/rental-units.interfaces.ts";
 import {Property} from "../interfaces/propertiesInterfaces.ts";
 import {Feature} from "../interfaces/featuresInterfaces.ts";
-import ItemList from "../components/UpdateDeleteButtons.tsx";
+import ItemList from "../components/ItemList.tsx";
 import RentalUnitsForm from "../components/forms/RentalUnitsForm.tsx";
 
 const RentalUnitsPage = () => {

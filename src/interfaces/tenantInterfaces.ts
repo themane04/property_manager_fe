@@ -1,3 +1,10 @@
+export interface TenantsListProps {
+    title: string
+    tenants: Tenant[]
+    handleEdit: (t: Tenant) => void
+    handleDelete: (id: string) => void
+}
+
 export interface Tenant {
     id: string
     first_name: string

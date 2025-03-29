@@ -7,7 +7,7 @@ import {showErrorToast, showInfoToast, showSuccessToast} from "../utils/toastUti
 import PageLayout from "../components/PageLayout.tsx";
 import InnerPageLayout from "../components/InnerPageLayout.tsx";
 import {Property} from "../interfaces/propertiesInterfaces.ts";
-import ItemList from "../components/UpdateDeleteButtons.tsx";
+import ItemList from "../components/ItemList.tsx";
 import DynamicForm from "../components/forms/DynamicForm.tsx";
 
 const PropertiesPage = () => {

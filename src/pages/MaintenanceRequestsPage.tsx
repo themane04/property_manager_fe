@@ -8,7 +8,7 @@ import PageLayout from "../components/PageLayout.tsx";
 import InnerPageLayout from "../components/InnerPageLayout.tsx";
 import {MaintenanceRequest} from "../interfaces/maintenanceRequestInterfaces.ts";
 import {RentalUnit} from "../interfaces/rental-units.interfaces.ts";
-import ItemList from "../components/UpdateDeleteButtons.tsx";
+import ItemList from "../components/ItemList.tsx";
 import MaintenanceRequestsForm from "../components/forms/MaintenanceRequestsForm.tsx";
 
 const MaintenanceRequestsPage = () => {

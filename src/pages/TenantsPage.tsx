@@ -7,10 +7,10 @@ import {initialTenant} from "../utils/initialStateUtil.ts";
 import {showErrorToast, showInfoToast, showSuccessToast} from "../utils/toastUtil.ts";
 import PageLayout from "../components/PageLayout.tsx";
 import InnerPageLayout from "../components/InnerPageLayout.tsx";
-import ItemList from "../components/UpdateDeleteButtons.tsx";
 import DynamicForm from "../components/forms/DynamicForm.tsx";
+import TenantsList from "../components/lists/TenantsList.tsx";
 
-function TenantsPage() {
+const TenantsPage = () => {
     const [tenants, setTenants] = useState<Tenant[]>([])
     const [form, setForm] = useState(initialTenant)
     const [editId, setEditId] = useState<string | null>(null)
@@ -37,7 +37,7 @@ function TenantsPage() {
 
         action
             .then(() => {
-                showSuccessToast(toast, editId ? 'Mieter aktualisiert' : 'Mieter erstellt')
+                showSuccessToast(toast, editId ? 'Tenant successfully updated' : 'Tenant successfully created')
                 setForm(initialTenant)
                 setEditId(null)
                 fetchTenants()
@@ -50,7 +50,7 @@ function TenantsPage() {
     const handleDelete = (id: string) => {
         axios.delete(`http://localhost:8000/api/tenants/${id}`).then(() => {
             fetchTenants()
-            showInfoToast(toast, 'Mieter gelöscht')
+            showInfoToast(toast, 'Tenant successfully deleted')
         })
     }
 
@@ -72,11 +72,11 @@ function TenantsPage() {
                         />
                     </InnerPageLayout>
 
-                    <ItemList
+                    <TenantsList
                         title={"📋 List of Tenants"}
-                        data={tenants}
-                        onEdit={handleEdit}
-                        onDelete={handleDelete}
+                        tenants={tenants}
+                        handleEdit={handleEdit}
+                        handleDelete={handleDelete}
                     />
                 </PageLayout>
             </>

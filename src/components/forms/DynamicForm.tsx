@@ -17,6 +17,7 @@ const DynamicForm = <T extends Record<string, any>>({
                         {key.replace(/_/g, ' ')}
                     </FormLabel>
                     <Input
+                        type={key === 'birthday' ? 'date' : 'text'}
                         name={key}
                         value={value}
                         onChange={onChange}
