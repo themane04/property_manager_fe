@@ -21,7 +21,7 @@ const PropertiesList = ({
                             🏗️ Year of construction: {p.year_of_construction} | Flats: {p.flats_amount} |
                             Park Spaces: {p.park_spaces_amount}
                         </Text>
-                        <Text fontSize="sm">👤 Besitzer: {p.owner}</Text>
+                        <Text fontSize="sm">👤 Owner: {p.owner}</Text>
                         <HStack mt={3}>
                             <Button size="sm" colorScheme="teal" onClick={() => handleEdit(p)}>
                                 Edit

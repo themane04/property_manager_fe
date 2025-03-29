@@ -68,7 +68,7 @@ const TenantsPage = () => {
                             data={form}
                             onChange={handleChange}
                             onSubmit={handleSubmit}
-                            editId={editId ? 'Update' : 'Create'}
+                            editId={editId}
                         />
                     </InnerPageLayout>
 
