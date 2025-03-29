@@ -62,7 +62,7 @@ ease.
 git clone https://github.com/themane04/property_manager_fe.git
 
 # 2. Navigate into the folder
-cd property-manager-frontend
+cd property-manager-fe
 
 # 3. Install dependencies
 npm install
