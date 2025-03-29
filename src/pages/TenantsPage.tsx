@@ -1,21 +1,13 @@
-import {
-    Box,
-    Button,
-    Input,
-    VStack,
-    Heading,
-    Text,
-    HStack,
-    useToast, FormControl, FormLabel
-} from '@chakra-ui/react'
+import {Button, FormControl, FormLabel, Input, useToast} from '@chakra-ui/react'
+import * as React from 'react'
 import {useEffect, useState} from 'react'
 import axios from 'axios'
 import {Tenant} from "../interfaces/tenant.interfaces.ts";
-import * as React from "react";
 import {initialTenant} from "../utils/initial-state.util.ts";
 import {showErrorToast, showInfoToast, showSuccessToast} from "../utils/toast.util.ts";
 import PageLayout from "../components/PageLayout.tsx";
 import InnerPageLayout from "../components/InnerPageLayout.tsx";
+import ItemList from "../components/UpdateDeleteButtons.tsx";
 
 function TenantsPage() {
     const [tenants, setTenants] = useState<Tenant[]>([])
@@ -71,58 +63,28 @@ function TenantsPage() {
             <>
                 <PageLayout title={'👤 Tenants'}>
                     <InnerPageLayout>
-                        <VStack spacing={4}>
-                            {Object.entries(form).map(([key, value]) => (
-                                <FormControl key={key} isRequired>
-                                    <FormLabel textTransform="capitalize">{key}</FormLabel>
-                                    <Input
-                                        name={key}
-                                        value={value}
-                                        onChange={handleChange}
-                                        bg="gray.50"
-                                    />
-                                </FormControl>
-                            ))}
-                            <Button colorScheme="blue" size="lg" alignSelf="flex-start" onClick={handleSubmit}>
-                                {editId ? 'Update' : 'Create'}
-                            </Button>
-                        </VStack>
+                        {Object.entries(form).map(([key, value]) => (
+                            <FormControl key={key} isRequired>
+                                <FormLabel textTransform="capitalize">{key}</FormLabel>
+                                <Input
+                                    name={key}
+                                    value={value}
+                                    onChange={handleChange}
+                                    bg="gray.50"
+                                />
+                            </FormControl>
+                        ))}
+                        <Button colorScheme="blue" size="lg" alignSelf="flex-start" onClick={handleSubmit}>
+                            {editId ? 'Update' : 'Create'}
+                        </Button>
                     </InnerPageLayout>
 
-                    <Heading size="md" mb={4} color="gray.700">
-                        📋 List of Tenants
-                    </Heading>
-                    <VStack align="stretch" spacing={4}>
-                        {tenants.map(t => (
-                            <Box
-                                key={t.id}
-                                p={5}
-                                borderWidth="1px"
-                                borderRadius="lg"
-                                shadow="sm"
-                                bg="gray.50"
-                                _hover={{shadow: 'md'}}
-                            >
-                                <Text fontWeight="bold" fontSize="lg" color="gray.800">
-                                    {t.first_name} {t.last_name}
-                                </Text>
-                                <Text fontSize="sm" color="gray.600">
-                                    📧 {t.email}
-                                </Text>
-                                <Text fontSize="sm" color="gray.600">
-                                    📍 {t.street} {t.house_number}, {t.postal_code} {t.city}
-                                </Text>
-                                <HStack mt={3}>
-                                    <Button size="sm" colorScheme="teal" onClick={() => handleEdit(t)}>
-                                        Bearbeiten
-                                    </Button>
-                                    <Button size="sm" colorScheme="red" onClick={() => handleDelete(t.id)}>
-                                        Löschen
-                                    </Button>
-                                </HStack>
-                            </Box>
-                        ))}
-                    </VStack>
+                    <ItemList
+                        title={"📋 List of Tenants"}
+                        data={tenants}
+                        onEdit={handleEdit}
+                        onDelete={handleDelete}
+                    />
                 </PageLayout>
             </>
         </>

@@ -1,13 +1,8 @@
 import {
-    Box,
     Button,
     FormControl,
     FormLabel,
-    Heading,
-    HStack,
     Input,
-    Text,
-    VStack,
     useToast,
 } from '@chakra-ui/react'
 import {useEffect, useState} from 'react'
@@ -18,6 +13,7 @@ import PageLayout from "../components/PageLayout.tsx";
 import * as React from "react";
 import InnerPageLayout from "../components/InnerPageLayout.tsx";
 import {Property} from "../interfaces/properties.interfaces.ts";
+import ItemList from "../components/UpdateDeleteButtons.tsx";
 
 const PropertiesPage = () => {
     const [properties, setProperties] = useState<Property[]>([])
@@ -79,44 +75,23 @@ const PropertiesPage = () => {
         <>
             <PageLayout title={'🏢 Properties'}>
                 <InnerPageLayout>
-                    <VStack spacing={4}>
-                        {Object.entries(form).map(([key, value]) => (
-                            <FormControl key={key} isRequired>
-                                <FormLabel textTransform="capitalize">{key.replace('_', ' ')}</FormLabel>
-                                <Input name={key} value={value} onChange={handleChange}/>
-                            </FormControl>
-                        ))}
-                        <Button colorScheme="blue" onClick={handleSubmit}>
-                            {editId ? 'Update' : 'Create'}
-                        </Button>
-                    </VStack>
+                    {Object.entries(form).map(([key, value]) => (
+                        <FormControl key={key} isRequired>
+                            <FormLabel textTransform="capitalize">{key.replace('_', ' ')}</FormLabel>
+                            <Input name={key} value={value} onChange={handleChange}/>
+                        </FormControl>
+                    ))}
+                    <Button colorScheme="blue" onClick={handleSubmit}>
+                        {editId ? 'Update' : 'Create'}
+                    </Button>
                 </InnerPageLayout>
 
-                <Heading size="md" mb={4}>
-                    📋 List of Properties
-                </Heading>
-                <VStack spacing={4}>
-                    {properties.map((p) => (
-                        <Box key={p.id} p={5} borderWidth="1px" borderRadius="lg" shadow="sm" w="100%" bg="gray.50">
-                            <Text fontWeight="bold" fontSize="lg">
-                                {p.name} – {p.street} {p.house_number}, {p.postal_code} {p.city}
-                            </Text>
-                            <Text fontSize="sm">
-                                🏗️ Year of construction: {p.year_of_construction} | Flats: {p.flats_amount} |
-                                Park Spaces: {p.park_spaces_amount}
-                            </Text>
-                            <Text fontSize="sm">👤 Besitzer: {p.owner}</Text>
-                            <HStack mt={3}>
-                                <Button size="sm" colorScheme="teal" onClick={() => handleEdit(p)}>
-                                    Edit
-                                </Button>
-                                <Button size="sm" colorScheme="red" onClick={() => handleDelete(p.id)}>
-                                    Delete
-                                </Button>
-                            </HStack>
-                        </Box>
-                    ))}
-                </VStack>
+                <ItemList
+                    title={"📋 List of Properties"}
+                    data={properties}
+                    onEdit={handleEdit}
+                    onDelete={handleDelete}
+                />
             </PageLayout>
         </>
     )

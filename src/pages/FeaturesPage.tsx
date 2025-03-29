@@ -1,13 +1,8 @@
 import {
-    Box,
     Button,
     FormControl,
     FormLabel,
-    Heading,
-    HStack,
     Input,
-    Text,
-    VStack,
     useToast,
 } from '@chakra-ui/react'
 import {useEffect, useState} from 'react'
@@ -18,6 +13,7 @@ import PageLayout from "../components/PageLayout.tsx";
 import * as React from "react";
 import InnerPageLayout from "../components/InnerPageLayout.tsx";
 import {Feature} from "../interfaces/features.interfaces.ts";
+import ItemList from "../components/UpdateDeleteButtons.tsx";
 
 const FeaturesPage = () => {
     const [features, setFeatures] = useState<Feature[]>([])
@@ -72,35 +68,21 @@ const FeaturesPage = () => {
         <>
             <PageLayout title="⚙️ Features">
                 <InnerPageLayout>
-                    <VStack spacing={4}>
-                        <FormControl isRequired>
-                            <FormLabel>Name</FormLabel>
-                            <Input name="name" value={form.name} onChange={handleChange}/>
-                        </FormControl>
-                        <Button colorScheme="blue" onClick={handleSubmit}>
-                            {editId ? 'Aktualisieren' : 'Erstellen'}
-                        </Button>
-                    </VStack>
+                    <FormControl isRequired>
+                        <FormLabel>Name</FormLabel>
+                        <Input name="name" value={form.name} onChange={handleChange}/>
+                    </FormControl>
+                    <Button colorScheme="blue" onClick={handleSubmit}>
+                        {editId ? 'Aktualisieren' : 'Erstellen'}
+                    </Button>
                 </InnerPageLayout>
 
-                <Heading size="md" mb={4}>
-                    📋 Bestehende Features
-                </Heading>
-                <VStack spacing={4} align="stretch">
-                    {features.map((f) => (
-                        <Box key={f.id} p={4} borderWidth="1px" borderRadius="lg" shadow="sm" bg="gray.50">
-                            <Text fontWeight="semibold">{f.name}</Text>
-                            <HStack mt={2}>
-                                <Button size="sm" colorScheme="teal" onClick={() => handleEdit(f)}>
-                                    Bearbeiten
-                                </Button>
-                                <Button size="sm" colorScheme="red" onClick={() => handleDelete(f.id)}>
-                                    Löschen
-                                </Button>
-                            </HStack>
-                        </Box>
-                    ))}
-                </VStack>
+                <ItemList
+                    title={"📋 List of Features"}
+                    data={features}
+                    onEdit={handleEdit}
+                    onDelete={handleDelete}
+                />
             </PageLayout>
         </>
     )

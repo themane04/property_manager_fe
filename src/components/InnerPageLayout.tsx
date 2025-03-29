@@ -1,5 +1,5 @@
 import {ReactNode} from "react";
-import {Box} from "@chakra-ui/react";
+import {Box, VStack} from "@chakra-ui/react";
 
 const InnerPageLayout = ({children}: { children: ReactNode }) => {
     return (
@@ -10,7 +10,9 @@ const InnerPageLayout = ({children}: { children: ReactNode }) => {
             borderRadius="md"
             mb={12}
         >
-            {children}
+            <VStack spacing={4}>
+                {children}
+            </VStack>
         </Box>
     );
 }
