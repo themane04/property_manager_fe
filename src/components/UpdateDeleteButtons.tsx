@@ -1,7 +1,8 @@
-import {VStack, Box, Text, HStack, Button, Heading} from '@chakra-ui/react';
+import {Box, Button, Heading, HStack, Text, VStack} from '@chakra-ui/react';
 import {ItemListProps} from "../interfaces/common.interfaces.ts";
 
-const ItemList = ({title, data, onEdit, onDelete}: ItemListProps) => {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+const ItemList = ({title, data, onEdit, onDelete}: ItemListProps<any>) => {
     return (
         <>
             <Heading
@@ -14,7 +15,7 @@ const ItemList = ({title, data, onEdit, onDelete}: ItemListProps) => {
                 spacing={4}
                 align="stretch"
             >
-                {data.map((item) => (
+                {data.map((item: any) => (
                     <Box
                         key={item.id}
                         p={4}
