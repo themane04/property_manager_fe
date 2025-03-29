@@ -1,10 +1,10 @@
 export const routes = [
     {
-        label: 'Mieter',
+        label: 'Tenants',
         path: '/tenants'
     },
     {
-        label: 'Liegenschaften',
+        label: 'Properties',
         path: '/properties'
     },
     {
@@ -12,19 +12,19 @@ export const routes = [
         path: '/features'
     },
     {
-        label: 'Mietobjekte',
+        label: 'Rental Units',
         path: '/rental-units'
     },
     {
-        label: 'Mietverträge',
+        label: 'Rental Contracts',
         path: '/rental-contracts'
     },
     {
-        label: 'Zahlungen',
+        label: 'Payments',
         path: '/payments'
     },
     {
-        label: 'Wartungsanfragen',
+        label: 'Maintenance Requests',
         path: '/maintenance-requests'
     },
 ]

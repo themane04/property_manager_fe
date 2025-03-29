@@ -18,6 +18,7 @@ import * as React from "react";
 import {initialPayment} from "../utils/initial-state.util.ts";
 import {showErrorToast, showInfoToast, showSuccessToast} from "../utils/toast.util.ts";
 import PageLayout from "../components/PageLayout.tsx";
+import InnerPageLayout from "../components/InnerPageLayout.tsx";
 
 const PaymentsPage = () => {
     const [payments, setPayments] = useState<Payment[]>([])
@@ -75,11 +76,8 @@ const PaymentsPage = () => {
 
     return (
         <>
-            <PageLayout title={'💳 Zahlungen'}>
-                <Box bg="white" p={6} shadow="md" borderRadius="md" mb={12}>
-                    <Heading size="md" mb={4}>
-                        {editId ? 'Zahlung bearbeiten' : 'Neue Zahlung'}
-                    </Heading>
+            <PageLayout title={'💳 Payments'}>
+                <InnerPageLayout>
                     <VStack spacing={4}>
                         <FormControl isRequired>
                             <FormLabel>Mietvertrag</FormLabel>
@@ -125,7 +123,7 @@ const PaymentsPage = () => {
                             {editId ? 'Aktualisieren' : 'Erstellen'}
                         </Button>
                     </VStack>
-                </Box>
+                </InnerPageLayout>
 
                 <Heading size="md" mb={4}>
                     📋 Alle Zahlungen

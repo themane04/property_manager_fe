@@ -17,6 +17,7 @@ import {initialProperty} from "../utils/initial-state.util.ts";
 import {showErrorToast, showInfoToast, showSuccessToast} from "../utils/toast.util.ts";
 import PageLayout from "../components/PageLayout.tsx";
 import * as React from "react";
+import InnerPageLayout from "../components/InnerPageLayout.tsx";
 
 const PropertiesPage = () => {
     const [properties, setProperties] = useState<Property[]>([])
@@ -77,7 +78,7 @@ const PropertiesPage = () => {
     return (
         <>
             <PageLayout title={'🏢 Properties'}>
-                <Box bg="white" p={6} shadow="md" borderRadius="md" mb={12}>
+                <InnerPageLayout>
                     <VStack spacing={4}>
                         {Object.entries(form).map(([key, value]) => (
                             <FormControl key={key} isRequired>
@@ -89,7 +90,7 @@ const PropertiesPage = () => {
                             {editId ? 'Update' : 'Create'}
                         </Button>
                     </VStack>
-                </Box>
+                </InnerPageLayout>
 
                 <Heading size="md" mb={4}>
                     📋 List of Properties

@@ -18,6 +18,7 @@ import {initialContract} from "../utils/initial-state.util.ts";
 import {showErrorToast, showInfoToast, showSuccessToast} from "../utils/toast.util.ts";
 import PageLayout from "../components/PageLayout.tsx";
 import * as React from "react";
+import InnerPageLayout from "../components/InnerPageLayout.tsx";
 
 
 const RentalContractsPage = () => {
@@ -81,11 +82,8 @@ const RentalContractsPage = () => {
 
     return (
         <>
-            <PageLayout title={'📄 Mietverträge'}>
-                <Box bg="white" p={6} shadow="md" borderRadius="md" mb={12}>
-                    <Heading size="md" mb={4}>
-                        {editId ? 'Vertrag bearbeiten' : 'Neuer Vertrag'}
-                    </Heading>
+            <PageLayout title={'📄 Rental Contracts'}>
+                <InnerPageLayout>
                     <VStack spacing={4}>
                         <FormControl isRequired>
                             <FormLabel>Mieter</FormLabel>
@@ -142,7 +140,7 @@ const RentalContractsPage = () => {
                             {editId ? 'Aktualisieren' : 'Erstellen'}
                         </Button>
                     </VStack>
-                </Box>
+                </InnerPageLayout>
 
                 <Heading size="md" mb={4}>
                     📋 Verträge

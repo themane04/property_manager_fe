@@ -18,6 +18,7 @@ import {initialRequest} from "../utils/initial-state.util.ts";
 import {showErrorToast, showSuccessToast} from "../utils/toast.util.ts";
 import PageLayout from "../components/PageLayout.tsx";
 import * as React from "react";
+import InnerPageLayout from "../components/InnerPageLayout.tsx";
 
 const MaintenanceRequestsPage = () => {
     const [requests, setRequests] = useState<MaintenanceRequest[]>([])
@@ -72,11 +73,8 @@ const MaintenanceRequestsPage = () => {
 
     return (
         <>
-            <PageLayout title={'🔧 Wartungsanfragen'}>
-                <Box bg="white" p={6} shadow="md" borderRadius="md" mb={12}>
-                    <Heading size="md" mb={4}>
-                        {editId ? 'Anfrage bearbeiten' : 'Neue Wartungsanfrage'}
-                    </Heading>
+            <PageLayout title={'🔧 Maintenance Requests'}>
+                <InnerPageLayout>
                     <VStack spacing={4}>
                         <FormControl isRequired>
                             <FormLabel>Mietobjekt</FormLabel>
@@ -122,7 +120,7 @@ const MaintenanceRequestsPage = () => {
                             {editId ? 'Aktualisieren' : 'Erstellen'}
                         </Button>
                     </VStack>
-                </Box>
+                </InnerPageLayout>
 
                 <Heading size="md" mb={4}>
                     📋 Anfragen

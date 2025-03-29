@@ -8,7 +8,7 @@ const MainPage = () => {
 
     return (
         <>
-            <PageLayout title={'🏢 Property Manager – Übersicht'}>
+            <PageLayout title={'🏢 Property Manager – Overview'}>
                 <SimpleGrid columns={[1, 2]} spacing={5}>
                     {routes.map((section) => (
                         <Button

@@ -15,6 +15,7 @@ import * as React from "react";
 import {initialTenant} from "../utils/initial-state.util.ts";
 import {showErrorToast, showInfoToast, showSuccessToast} from "../utils/toast.util.ts";
 import PageLayout from "../components/PageLayout.tsx";
+import InnerPageLayout from "../components/InnerPageLayout.tsx";
 
 function TenantsPage() {
     const [tenants, setTenants] = useState<Tenant[]>([])
@@ -69,18 +70,7 @@ function TenantsPage() {
         <>
             <>
                 <PageLayout title={'👤 Tenants'}>
-                    <Box
-                        bg="white"
-                        borderRadius="xl"
-                        shadow="xl"
-                        p={8}
-                        mb={12}
-                        border="1px solid"
-                        borderColor="gray.100"
-                    >
-                        <Heading size="md" mb={6} color="blue.600">
-                            {editId ? 'Mieter bearbeiten' : 'Neuen Mieter erstellen'}
-                        </Heading>
+                    <InnerPageLayout>
                         <VStack spacing={4}>
                             {Object.entries(form).map(([key, value]) => (
                                 <FormControl key={key} isRequired>
@@ -94,13 +84,13 @@ function TenantsPage() {
                                 </FormControl>
                             ))}
                             <Button colorScheme="blue" size="lg" alignSelf="flex-start" onClick={handleSubmit}>
-                                {editId ? 'Aktualisieren' : 'Erstellen'}
+                                {editId ? 'Update' : 'Create'}
                             </Button>
                         </VStack>
-                    </Box>
+                    </InnerPageLayout>
 
                     <Heading size="md" mb={4} color="gray.700">
-                        📋 Bestehende Mieter
+                        📋 List of Tenants
                     </Heading>
                     <VStack align="stretch" spacing={4}>
                         {tenants.map(t => (

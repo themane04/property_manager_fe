@@ -18,6 +18,7 @@ import {initialUnit} from "../utils/initial-state.util.ts";
 import {showErrorToast, showInfoToast, showSuccessToast} from "../utils/toast.util.ts";
 import PageLayout from "../components/PageLayout.tsx";
 import * as React from "react";
+import InnerPageLayout from "../components/InnerPageLayout.tsx";
 
 const RentalUnitsPage = () => {
     const [units, setUnits] = useState<RentalUnit[]>([])
@@ -89,11 +90,8 @@ const RentalUnitsPage = () => {
 
     return (
         <>
-            <PageLayout title={'🏠 Mietobjekte'}>
-                <Box bg="white" p={6} shadow="md" borderRadius="md" mb={12}>
-                    <Heading size="md" mb={4}>
-                        {editId ? 'Mietobjekt bearbeiten' : 'Neues Mietobjekt'}
-                    </Heading>
+            <PageLayout title={'🏠 Rental Units'}>
+                <InnerPageLayout>
                     <VStack spacing={4}>
                         <FormControl isRequired>
                             <FormLabel>Bezeichnung</FormLabel>
@@ -189,7 +187,7 @@ const RentalUnitsPage = () => {
                             {editId ? 'Aktualisieren' : 'Erstellen'}
                         </Button>
                     </VStack>
-                </Box>
+                </InnerPageLayout>
 
                 <Heading size="md" mb={4}>
                     📋 Mietobjekte

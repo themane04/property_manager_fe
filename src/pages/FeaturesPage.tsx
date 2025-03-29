@@ -17,6 +17,7 @@ import {initialFeature} from "../utils/initial-state.util.ts";
 import {showErrorToast, showInfoToast, showSuccessToast} from "../utils/toast.util.ts";
 import PageLayout from "../components/PageLayout.tsx";
 import * as React from "react";
+import InnerPageLayout from "../components/InnerPageLayout.tsx";
 
 const FeaturesPage = () => {
     const [features, setFeatures] = useState<Feature[]>([])
@@ -69,11 +70,8 @@ const FeaturesPage = () => {
 
     return (
         <>
-            <PageLayout title="⚙️ Feature-Verwaltung">
-                <Box bg="white" p={6} shadow="md" borderRadius="md" mb={12}>
-                    <Heading size="md" mb={4}>
-                        {editId ? 'Feature bearbeiten' : 'Neues Feature'}
-                    </Heading>
+            <PageLayout title="⚙️ Features">
+                <InnerPageLayout>
                     <VStack spacing={4}>
                         <FormControl isRequired>
                             <FormLabel>Name</FormLabel>
@@ -83,7 +81,7 @@ const FeaturesPage = () => {
                             {editId ? 'Aktualisieren' : 'Erstellen'}
                         </Button>
                     </VStack>
-                </Box>
+                </InnerPageLayout>
 
                 <Heading size="md" mb={4}>
                     📋 Bestehende Features
