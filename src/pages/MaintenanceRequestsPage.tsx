@@ -8,8 +8,8 @@ import PageLayout from "../components/PageLayout.tsx";
 import InnerPageLayout from "../components/InnerPageLayout.tsx";
 import {MaintenanceRequest} from "../interfaces/maintenanceRequestInterfaces.ts";
 import {RentalUnit} from "../interfaces/rentalUnitsInterfaces.ts";
-import ItemList from "../components/ItemList.tsx";
 import MaintenanceRequestsForm from "../components/forms/MaintenanceRequestsForm.tsx";
+import MaintenanceRequestsList from "../components/lists/MaintenanceRequestsList.tsx";
 
 const MaintenanceRequestsPage = () => {
     const [requests, setRequests] = useState<MaintenanceRequest[]>([])
@@ -78,15 +78,15 @@ const MaintenanceRequestsPage = () => {
                     />
                 </InnerPageLayout>
 
-                <ItemList
-                    title={"📋 List of Maintenance Requests"}
-                    data={requests}
-                    onEdit={handleEdit}
-                    onDelete={handleDelete}
+                <MaintenanceRequestsList
+                    title="🛠️ Maintenance Requests"
+                    requests={requests}
+                    handleEdit={handleEdit}
+                    handleDelete={handleDelete}
                 />
             </PageLayout>
         </>
     )
 }
 
-export default MaintenanceRequestsPage
+export default MaintenanceRequestsPage;

@@ -13,7 +13,12 @@ const MaintenanceRequestsForm = ({
         <>
             <FormControl isRequired>
                 <FormLabel>Rental Unit</FormLabel>
-                <Select name="rental_unit" value={form.rental_unit} onChange={handleChange}>
+                <Select
+                    name="rental_unit"
+                    value={form.rental_unit}
+                    onChange={handleChange}
+                    placeholder="Select rental unit"
+                >
                     {rentalUnits.map((u) => (
                         <option key={u.id} value={u.id}>
                             {u.designation}

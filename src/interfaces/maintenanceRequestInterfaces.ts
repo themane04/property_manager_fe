@@ -1,6 +1,13 @@
 import {RentalUnit} from "./rentalUnitsInterfaces.ts";
 import * as React from "react";
 
+export interface MaintenanceRequestsListProps {
+    title: string;
+    requests: MaintenanceRequest[];
+    handleEdit: (request: MaintenanceRequest) => void;
+    handleDelete: (id: string) => void;
+}
+
 export interface MaintenanceRequestsFormProps {
     form: Omit<MaintenanceRequest, "id">
     rentalUnits: RentalUnit[]
