@@ -3,6 +3,13 @@ import {Property} from "./propertiesInterfaces.ts";
 import {Feature} from "./featuresInterfaces.ts";
 import * as React from "react";
 
+export interface RentalUnitsListProps {
+    title: string
+    units: RentalUnit[]
+    handleEdit: (unit: RentalUnit) => void
+    handleDelete: (id: string) => void
+}
+
 export interface RentalUnisFormProps {
     form: Omit<RentalUnit, "id">
     setForm: React.Dispatch<React.SetStateAction<Omit<RentalUnit, "id">>>
@@ -24,6 +31,6 @@ export interface RentalUnit {
     available_from: string
     status: string
     tenant: string
-    properties: string
+    property: string
     features: string[]
 }

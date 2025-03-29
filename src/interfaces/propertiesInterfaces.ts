@@ -1,7 +1,7 @@
 export interface PropertiesListProps {
     title: string
     properties: Property[]
-    handleEdit: (t: Property) => void
+    handleEdit: (property: Property) => void
     handleDelete: (id: string) => void
 }
 

@@ -1,5 +1,5 @@
 import {Tenant} from "./tenantInterfaces.ts";
-import {RentalUnit} from "./rental-units.interfaces.ts";
+import {RentalUnit} from "./rentalUnitsInterfaces.ts";
 import * as React from "react";
 
 export interface RentalContractFormProps {

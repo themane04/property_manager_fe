@@ -1,7 +1,7 @@
 export interface TenantsListProps {
     title: string
     tenants: Tenant[]
-    handleEdit: (t: Tenant) => void
+    handleEdit: (tenant: Tenant) => void
     handleDelete: (id: string) => void
 }
 

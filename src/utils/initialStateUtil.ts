@@ -1,7 +1,7 @@
 import {Tenant} from "../interfaces/tenantInterfaces.ts";
 import {Property} from "../interfaces/propertiesInterfaces.ts";
 import {Feature} from "../interfaces/featuresInterfaces.ts";
-import {RentalUnit} from "../interfaces/rental-units.interfaces.ts";
+import {RentalUnit} from "../interfaces/rentalUnitsInterfaces.ts";
 import {RentalContract} from "../interfaces/rentalContractsInterfaces.ts";
 import {Payment} from "../interfaces/paymentsInterfaces.ts";
 import {MaintenanceRequest} from "../interfaces/maintenanceRequestInterfaces.ts";
@@ -42,7 +42,7 @@ export const initialUnit: Omit<RentalUnit, 'id'> = {
     rent: '',
     available_from: '',
     status: 'free',
-    properties: '',
+    property: '',
     tenant: '',
     features: [],
 }

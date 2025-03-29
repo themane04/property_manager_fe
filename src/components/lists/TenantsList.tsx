@@ -13,9 +13,9 @@ const TenantsList = ({
         <>
             <ListTitle title={title}/>
             <VStack align="stretch" spacing={4}>
-                {tenants.map(t => (
+                {tenants.map(tenant => (
                     <Box
-                        key={t.id}
+                        key={tenant.id}
                         p={5}
                         borderWidth="1px"
                         borderRadius="lg"
@@ -23,17 +23,27 @@ const TenantsList = ({
                         bg="gray.50"
                         _hover={{shadow: 'md'}}
                     >
-                        <Text fontWeight="bold" fontSize="lg" color="gray.800">
-                            {t.first_name} {t.last_name}
+                        <Text
+                            fontWeight="bold"
+                            fontSize="lg"
+                            color="gray.800"
+                        >
+                            {tenant.first_name} {tenant.last_name}
                         </Text>
-                        <Text fontSize="sm" color="gray.600">
-                            📧 {t.email}
+                        <Text
+                            fontSize="sm"
+                            color="gray.600"
+                        >
+                            📧 {tenant.email}
                         </Text>
-                        <Text fontSize="sm" color="gray.600">
-                            📍 {t.street} {t.house_number}, {t.postal_code} {t.city}
+                        <Text
+                            fontSize="sm"
+                            color="gray.600"
+                        >
+                            📍 {tenant.street} {tenant.house_number}, {tenant.postal_code} {tenant.city}
                         </Text>
                         <ListActionButtons
-                            item={t}
+                            item={tenant}
                             handleEdit={handleEdit}
                             handleDelete={handleDelete}
                         />

@@ -1,5 +1,5 @@
 import {Checkbox, CheckboxGroup, FormControl, FormLabel, Input, Select, VStack} from "@chakra-ui/react";
-import {RentalUnisFormProps} from "../../interfaces/rental-units.interfaces.ts";
+import {RentalUnisFormProps} from "../../interfaces/rentalUnitsInterfaces.ts";
 import FormActionButton from "./FormActionButton.tsx";
 
 const RentalUnitsForm = ({
@@ -70,9 +70,14 @@ const RentalUnitsForm = ({
             </FormControl>
 
             <FormControl isRequired>
-                <FormLabel>Properties</FormLabel>
-                <Select name="properties" value={form.properties || ''} onChange={handleChange}>
-                    {properties.map(p => (
+                <FormLabel>Property</FormLabel>
+                <Select
+                    name="property"
+                    value={form.property}
+                    onChange={handleChange}
+                    placeholder="Select a property"
+                >
+                    {properties.map((p) => (
                         <option key={p.id} value={p.id}>
                             {p.name} – {p.city}
                         </option>

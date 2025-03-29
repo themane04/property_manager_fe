@@ -8,7 +8,7 @@ import {showErrorToast, showInfoToast, showSuccessToast} from "../utils/toastUti
 import PageLayout from "../components/PageLayout.tsx";
 import InnerPageLayout from "../components/InnerPageLayout.tsx";
 import {RentalContract} from "../interfaces/rentalContractsInterfaces.ts";
-import {RentalUnit} from "../interfaces/rental-units.interfaces.ts";
+import {RentalUnit} from "../interfaces/rentalUnitsInterfaces.ts";
 import ItemList from "../components/ItemList.tsx";
 import RentalContractsForm from "../components/forms/RentalContractsForm.tsx";
 

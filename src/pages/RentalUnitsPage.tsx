@@ -7,11 +7,11 @@ import {initialUnit} from "../utils/initialStateUtil.ts";
 import {showErrorToast, showInfoToast, showSuccessToast} from "../utils/toastUtil.ts";
 import PageLayout from "../components/PageLayout.tsx";
 import InnerPageLayout from "../components/InnerPageLayout.tsx";
-import {RentalUnit} from "../interfaces/rental-units.interfaces.ts";
+import {RentalUnit} from "../interfaces/rentalUnitsInterfaces.ts";
 import {Property} from "../interfaces/propertiesInterfaces.ts";
 import {Feature} from "../interfaces/featuresInterfaces.ts";
-import ItemList from "../components/ItemList.tsx";
 import RentalUnitsForm from "../components/forms/RentalUnitsForm.tsx";
+import RentalUnitsList from "../components/lists/RentalUnitsList.tsx";
 
 const RentalUnitsPage = () => {
     const [units, setUnits] = useState<RentalUnit[]>([])
@@ -100,15 +100,15 @@ const RentalUnitsPage = () => {
                     />
                 </InnerPageLayout>
 
-                <ItemList
-                    title={"📋 List of Rental Units"}
-                    data={units}
-                    onEdit={handleEdit}
-                    onDelete={handleDelete}
+                <RentalUnitsList
+                    title="🏘️ List of Rental Units"
+                    units={units}
+                    handleEdit={handleEdit}
+                    handleDelete={handleDelete}
                 />
             </PageLayout>
         </>
     )
 }
 
-export default RentalUnitsPage
+export default RentalUnitsPage;

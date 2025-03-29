@@ -13,18 +13,31 @@ const PropertiesList = ({
         <>
             <ListTitle title={title}/>
             <VStack spacing={4}>
-                {properties.map((p) => (
-                    <Box key={p.id} p={5} borderWidth="1px" borderRadius="lg" shadow="sm" w="100%" bg="gray.50">
-                        <Text fontWeight="bold" fontSize="lg">
-                            {p.name} – {p.street} {p.house_number}, {p.postal_code} {p.city}
+                {properties.map((properties) => (
+                    <Box
+                        key={properties.id}
+                        p={5}
+                        borderWidth="1px"
+                        borderRadius="lg"
+                        shadow="sm"
+                        w="100%"
+                        bg="gray.50"
+                    >
+                        <Text
+                            fontWeight="bold"
+                            fontSize="lg"
+                        >
+                            {properties.name} – {properties.street} {properties.house_number},
+                            {properties.postal_code} {properties.city}
                         </Text>
                         <Text fontSize="sm">
-                            🏗️ Year of construction: {p.year_of_construction} | Flats: {p.flats_amount} |
-                            Park Spaces: {p.park_spaces_amount}
+                            🏗️ Year of construction: {properties.year_of_construction} |
+                            Flats: {properties.flats_amount} |
+                            Park Spaces: {properties.park_spaces_amount}
                         </Text>
-                        <Text fontSize="sm">👤 Owner: {p.owner}</Text>
+                        <Text fontSize="sm">👤 Owner: {properties.owner}</Text>
                         <ListActionButtons
-                            item={p}
+                            item={properties}
                             handleEdit={handleEdit}
                             handleDelete={handleDelete}
                         />
