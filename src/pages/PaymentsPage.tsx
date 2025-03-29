@@ -8,8 +8,8 @@ import PageLayout from "../components/PageLayout.tsx";
 import InnerPageLayout from "../components/InnerPageLayout.tsx";
 import {Payment} from "../interfaces/paymentsInterfaces.ts";
 import {RentalContract} from "../interfaces/rentalContractsInterfaces.ts";
-import ItemList from "../components/ItemList.tsx";
 import PaymentsForm from "../components/forms/PaymentsForm.tsx";
+import PaymentsList from "../components/lists/PaymentsList.tsx";
 
 const PaymentsPage = () => {
     const [payments, setPayments] = useState<Payment[]>([])
@@ -78,11 +78,11 @@ const PaymentsPage = () => {
                     />
                 </InnerPageLayout>
 
-                <ItemList
-                    title={"📋 List of Payments"}
-                    data={payments}
-                    onEdit={handleEdit}
-                    onDelete={handleDelete}
+                <PaymentsList
+                    title="💵 Payments Overview"
+                    payments={payments}
+                    handleEdit={handleEdit}
+                    handleDelete={handleDelete}
                 />
             </PageLayout>
         </>

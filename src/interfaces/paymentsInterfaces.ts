@@ -1,6 +1,13 @@
 import {RentalContract} from "./rentalContractsInterfaces.ts";
 import * as React from "react";
 
+export interface PaymentsListProps {
+    title: string;
+    payments: Payment[];
+    handleEdit: (payment: Payment) => void;
+    handleDelete: (id: string) => void;
+}
+
 export interface PaymentsFormProps {
     form: Omit<Payment, "id">
     contracts: RentalContract[]
