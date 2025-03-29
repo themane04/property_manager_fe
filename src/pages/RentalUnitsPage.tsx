@@ -12,7 +12,7 @@ import {Property} from "../interfaces/propertiesInterfaces.ts";
 import {Feature} from "../interfaces/featuresInterfaces.ts";
 import RentalUnitsForm from "../components/forms/RentalUnitsForm.tsx";
 import RentalUnitsList from "../components/lists/RentalUnitsList.tsx";
-import {environments} from "../interfaces/environments.ts";
+import {environments} from "../services/environments.ts";
 
 const RentalUnitsPage = () => {
     const [units, setUnits] = useState<RentalUnit[]>([])

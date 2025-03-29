@@ -9,7 +9,7 @@ import InnerPageLayout from "../components/InnerPageLayout.tsx";
 import {Property} from "../interfaces/propertiesInterfaces.ts";
 import DynamicForm from "../components/forms/DynamicForm.tsx";
 import PropertiesList from "../components/lists/PropertiesList.tsx";
-import {environments} from "../interfaces/environments.ts";
+import {environments} from "../services/environments.ts";
 
 const PropertiesPage = () => {
     const [properties, setProperties] = useState<Property[]>([])

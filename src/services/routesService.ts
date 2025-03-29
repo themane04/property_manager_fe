@@ -1,5 +1,5 @@
 import {FaBuilding, FaFileContract, FaHome, FaMoneyBillWave, FaStar, FaTools, FaUsers} from "react-icons/fa";
-import {RoutesProps} from "./commonInterfaces.ts";
+import {RoutesProps} from "../interfaces/commonInterfaces.ts";
 
 export const routes: RoutesProps[] = [
     {

@@ -10,7 +10,7 @@ import {MaintenanceRequest} from "../interfaces/maintenanceRequestInterfaces.ts"
 import {RentalUnit} from "../interfaces/rentalUnitsInterfaces.ts";
 import MaintenanceRequestsForm from "../components/forms/MaintenanceRequestsForm.tsx";
 import MaintenanceRequestsList from "../components/lists/MaintenanceRequestsList.tsx";
-import {environments} from "../interfaces/environments.ts";
+import {environments} from "../services/environments.ts";
 
 const MaintenanceRequestsPage = () => {
     const [requests, setRequests] = useState<MaintenanceRequest[]>([])

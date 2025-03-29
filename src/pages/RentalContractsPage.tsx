@@ -11,7 +11,7 @@ import {RentalContract} from "../interfaces/rentalContractsInterfaces.ts";
 import {RentalUnit} from "../interfaces/rentalUnitsInterfaces.ts";
 import RentalContractsForm from "../components/forms/RentalContractsForm.tsx";
 import RentalContractsList from "../components/lists/RentalContractsList.tsx";
-import {environments} from "../interfaces/environments.ts";
+import {environments} from "../services/environments.ts";
 
 
 const RentalContractsPage = () => {

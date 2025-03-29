@@ -9,7 +9,7 @@ import PageLayout from "../components/PageLayout.tsx";
 import InnerPageLayout from "../components/InnerPageLayout.tsx";
 import DynamicForm from "../components/forms/DynamicForm.tsx";
 import TenantsList from "../components/lists/TenantsList.tsx";
-import {environments} from "../interfaces/environments.ts";
+import {environments} from "../services/environments.ts";
 
 const TenantsPage = () => {
     const [tenants, setTenants] = useState<Tenant[]>([])

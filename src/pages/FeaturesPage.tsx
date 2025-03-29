@@ -9,7 +9,7 @@ import InnerPageLayout from "../components/InnerPageLayout.tsx";
 import {Feature} from "../interfaces/featuresInterfaces.ts";
 import DynamicForm from "../components/forms/DynamicForm.tsx";
 import FeaturesList from "../components/lists/FeaturesList.tsx";
-import {environments} from "../interfaces/environments.ts";
+import {environments} from "../services/environments.ts";
 
 
 const FeaturesPage = () => {

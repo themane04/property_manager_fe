@@ -10,7 +10,7 @@ import {Payment} from "../interfaces/paymentsInterfaces.ts";
 import {RentalContract} from "../interfaces/rentalContractsInterfaces.ts";
 import PaymentsForm from "../components/forms/PaymentsForm.tsx";
 import PaymentsList from "../components/lists/PaymentsList.tsx";
-import {environments} from "../interfaces/environments.ts";
+import {environments} from "../services/environments.ts";
 
 const PaymentsPage = () => {
     const [payments, setPayments] = useState<Payment[]>([])
