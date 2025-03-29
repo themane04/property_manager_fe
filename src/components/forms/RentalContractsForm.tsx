@@ -1,19 +1,20 @@
-import {Button, FormControl, FormLabel, Input, Select} from "@chakra-ui/react";
+import {FormControl, FormLabel, Input, Select} from "@chakra-ui/react";
 import {RentalContractFormProps} from "../../interfaces/rentalContractsInterfaces.ts";
+import FormActionButton from "./FormActionButton.tsx";
 
 const RentalContractsForm = ({
-                                form,
-                                tenants,
-                                rentalUnits,
-                                handleChange,
-                                handleSubmit,
-                                editId,
-                            }: RentalContractFormProps) => {
+                                 form,
+                                 tenants,
+                                 rentalUnits,
+                                 handleChange,
+                                 handleSubmit,
+                                 editId,
+                             }: RentalContractFormProps) => {
     return (
         <>
             <FormControl isRequired>
-                <FormLabel>Mieter</FormLabel>
-                <Select name="mieter" value={form.tenant} onChange={handleChange}>
+                <FormLabel>Tenant</FormLabel>
+                <Select name="tenant" value={form.tenant} onChange={handleChange}>
                     {tenants.map((t) => (
                         <option key={t.id} value={t.id}>
                             {t.first_name} {t.last_name}
@@ -23,8 +24,8 @@ const RentalContractsForm = ({
             </FormControl>
 
             <FormControl isRequired>
-                <FormLabel>Mietobjekt</FormLabel>
-                <Select name="mietobjekt" value={form.rental_unit} onChange={handleChange}>
+                <FormLabel>Rental Unit</FormLabel>
+                <Select name="rental_unit" value={form.rental_unit} onChange={handleChange}>
                     {rentalUnits.map((u) => (
                         <option key={u.id} value={u.id}>
                             {u.designation} – {u.type}
@@ -34,38 +35,39 @@ const RentalContractsForm = ({
             </FormControl>
 
             <FormControl isRequired>
-                <FormLabel>Vertragsbeginn</FormLabel>
-                <Input type="date" name="vertragsbeginn" value={form.start_of_contract}
+                <FormLabel>Start Of Contract</FormLabel>
+                <Input type="date" name="start_of_contract" value={form.start_of_contract}
                        onChange={handleChange}/>
             </FormControl>
 
             <FormControl isRequired>
-                <FormLabel>Vertragsende</FormLabel>
-                <Input type="date" name="vertragsende" value={form.end_of_contract}
+                <FormLabel>End Of Contract</FormLabel>
+                <Input type="date" name="end_of_contract" value={form.end_of_contract}
                        onChange={handleChange}/>
             </FormControl>
 
             <FormControl isRequired>
-                <FormLabel>Mietzins</FormLabel>
-                <Input name="mietzins" value={form.rent} onChange={handleChange}/>
+                <FormLabel>Rent</FormLabel>
+                <Input name="rent" value={form.rent} onChange={handleChange}/>
             </FormControl>
 
             <FormControl isRequired>
-                <FormLabel>Kaution</FormLabel>
-                <Input name="kaution" value={form.deposit} onChange={handleChange}/>
+                <FormLabel>Deposit</FormLabel>
+                <Input name="deposit" value={form.deposit} onChange={handleChange}/>
             </FormControl>
 
             <FormControl isRequired>
                 <FormLabel>Status</FormLabel>
                 <Select name="status" value={form.status} onChange={handleChange}>
-                    <option value="aktiv">aktiv</option>
-                    <option value="beendet">beendet</option>
+                    <option value="active">active</option>
+                    <option value="ended">ended</option>
                 </Select>
             </FormControl>
 
-            <Button colorScheme="blue" onClick={handleSubmit}>
-                {editId ? 'Aktualisieren' : 'Erstellen'}
-            </Button>
+            <FormActionButton
+                handleSubmit={handleSubmit}
+                editId={editId}
+            />
         </>
     )
 }

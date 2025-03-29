@@ -1,12 +1,13 @@
-import {Button, FormControl, FormLabel, Input,} from '@chakra-ui/react';
+import {FormControl, FormLabel, Input,} from '@chakra-ui/react';
 import {DynamicFormProps} from "../../interfaces/commonInterfaces.ts";
+import FormActionButton from "./FormActionButton.tsx";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const DynamicForm = <T extends Record<string, any>>({
                                                         data,
                                                         onChange,
                                                         onSubmit,
-                                                        submitLabel = 'Submit',
+                                                        editId,
                                                     }: DynamicFormProps<T>) => {
     return (
         <>
@@ -22,9 +23,10 @@ const DynamicForm = <T extends Record<string, any>>({
                     />
                 </FormControl>
             ))}
-            <Button colorScheme="blue" onClick={onSubmit}>
-                {submitLabel}
-            </Button>
+            <FormActionButton
+                handleSubmit={onSubmit}
+                editId={editId}
+            />
         </>
     );
 };

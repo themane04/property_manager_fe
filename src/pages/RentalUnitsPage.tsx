@@ -59,7 +59,10 @@ const RentalUnitsPage = () => {
 
         action
             .then(() => {
-                showSuccessToast(toast, editId ? 'Mietobjekt aktualisiert' : 'Mietobjekt erstellt')
+                showSuccessToast(toast, editId
+                    ? 'Rental Unit successfully updated'
+                    : 'Rental Unit successfully created'
+                )
                 setForm(initialUnit)
                 setEditId(null)
                 fetchUnits()
@@ -72,7 +75,7 @@ const RentalUnitsPage = () => {
     const handleDelete = (id: string) => {
         axios.delete(`http://localhost:8000/api/rental-units/${id}`).then(() => {
             fetchUnits()
-            showInfoToast(toast, 'Mietobjekt gelöscht')
+            showInfoToast(toast, 'Rental Unit successfully deleted')
         })
     }
 

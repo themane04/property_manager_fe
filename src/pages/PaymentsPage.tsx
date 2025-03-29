@@ -43,7 +43,7 @@ const PaymentsPage = () => {
 
         action
             .then(() => {
-                showSuccessToast(toast, editId ? 'Zahlung aktualisiert' : 'Zahlung erfasst')
+                showSuccessToast(toast, editId ? 'Payment successfully updated' : 'Payment successfully created')
                 setForm(initialPayment)
                 setEditId(null)
                 fetchAll()
@@ -56,7 +56,7 @@ const PaymentsPage = () => {
     const handleDelete = (id: string) => {
         axios.delete(`http://localhost:8000/api/payments/${id}`).then(() => {
             fetchAll()
-            showInfoToast(toast, 'Zahlung gelöscht')
+            showInfoToast(toast, 'Payment successfully deleted')
         })
     }
 

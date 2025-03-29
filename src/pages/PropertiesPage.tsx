@@ -44,7 +44,7 @@ const PropertiesPage = () => {
 
         action
             .then(() => {
-                showSuccessToast(toast, editId ? 'Liegenschaft aktualisiert' : 'Liegenschaft erstellt')
+                showSuccessToast(toast, editId ? 'Property successfully updated' : 'Property successfully created')
                 setForm(initialProperty)
                 setEditId(null)
                 fetchProperties()
@@ -57,7 +57,7 @@ const PropertiesPage = () => {
     const handleDelete = (id: string) => {
         axios.delete(`http://localhost:8000/api/properties/${id}`).then(() => {
             fetchProperties()
-            showInfoToast(toast, 'Liegenschaft gelöscht')
+            showInfoToast(toast, 'Property successfully deleted')
         })
     }
 
@@ -74,7 +74,7 @@ const PropertiesPage = () => {
                         data={form}
                         onChange={handleChange}
                         onSubmit={handleSubmit}
-                        submitLabel={editId ? 'Update' : 'Create'}
+                        editId={editId ? 'Update' : 'Create'}
                     />
                 </InnerPageLayout>
 

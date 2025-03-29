@@ -37,7 +37,7 @@ const FeaturesPage = () => {
 
         action
             .then(() => {
-                showSuccessToast(toast, editId ? 'Feature aktualisiert' : 'Feature erstellt')
+                showSuccessToast(toast, editId ? 'Feature successfully updated' : 'Feature successfully created')
                 setForm(initialFeature)
                 setEditId(null)
                 fetchFeatures()
@@ -50,7 +50,7 @@ const FeaturesPage = () => {
     const handleDelete = (id: string) => {
         axios.delete(`http://localhost:8000/api/features/${id}`).then(() => {
             fetchFeatures()
-            showInfoToast(toast, 'Feature gelöscht')
+            showInfoToast(toast, 'Feature successfully deleted')
         })
     }
 
@@ -67,7 +67,7 @@ const FeaturesPage = () => {
                         data={form}
                         onChange={handleChange}
                         onSubmit={handleSubmit}
-                        submitLabel={editId ? 'Update' : 'Create'}
+                        editId={editId ? 'Update' : 'Create'}
                     />
                 </InnerPageLayout>
 

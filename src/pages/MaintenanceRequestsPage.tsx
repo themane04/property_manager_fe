@@ -40,7 +40,10 @@ const MaintenanceRequestsPage = () => {
 
         action
             .then(() => {
-                showSuccessToast(toast, editId ? 'Anfrage aktualisiert' : 'Anfrage erstellt')
+                showSuccessToast(toast, editId
+                    ? 'Maintenance Request successfully updated'
+                    : 'Maintenance Request successfully created'
+                )
                 setForm(initialRequest)
                 setEditId(null)
                 fetchAll()
@@ -53,7 +56,7 @@ const MaintenanceRequestsPage = () => {
     const handleDelete = (id: string) => {
         axios.delete(`http://localhost:8000/api/maintenance-requests/${id}`).then(() => {
             fetchAll()
-            showSuccessToast(toast, 'Anfrage gelöscht')
+            showSuccessToast(toast, 'Maintenance Request successfully deleted')
         })
     }
 

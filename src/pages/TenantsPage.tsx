@@ -68,7 +68,7 @@ function TenantsPage() {
                             data={form}
                             onChange={handleChange}
                             onSubmit={handleSubmit}
-                            submitLabel={editId ? 'Update' : 'Create'}
+                            editId={editId ? 'Update' : 'Create'}
                         />
                     </InnerPageLayout>
 

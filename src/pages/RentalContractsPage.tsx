@@ -50,7 +50,10 @@ const RentalContractsPage = () => {
 
         action
             .then(() => {
-                showSuccessToast(toast, editId ? 'Vertrag aktualisiert' : 'Vertrag erstellt')
+                showSuccessToast(toast, editId
+                    ? 'Rental Contract successfully updated'
+                    : 'Rental Contract successfully created'
+                )
                 setForm(initialContract)
                 setEditId(null)
                 fetchAll()
@@ -63,7 +66,7 @@ const RentalContractsPage = () => {
     const handleDelete = (id: string) => {
         axios.delete(`http://localhost:8000/api/rental-contracts/${id}`).then(() => {
             fetchAll()
-            showInfoToast(toast, 'Vertrag gelöscht')
+            showInfoToast(toast, 'Rental Contract successfully deleted')
         })
     }
 
