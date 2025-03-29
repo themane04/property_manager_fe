@@ -7,8 +7,8 @@ import {showErrorToast, showInfoToast, showSuccessToast} from "../utils/toastUti
 import PageLayout from "../components/PageLayout.tsx";
 import InnerPageLayout from "../components/InnerPageLayout.tsx";
 import {Property} from "../interfaces/propertiesInterfaces.ts";
-import ItemList from "../components/ItemList.tsx";
 import DynamicForm from "../components/forms/DynamicForm.tsx";
+import PropertiesList from "../components/lists/PropertiesList.tsx";
 
 const PropertiesPage = () => {
     const [properties, setProperties] = useState<Property[]>([])
@@ -78,11 +78,11 @@ const PropertiesPage = () => {
                     />
                 </InnerPageLayout>
 
-                <ItemList
+                <PropertiesList
                     title={"📋 List of Properties"}
-                    data={properties}
-                    onEdit={handleEdit}
-                    onDelete={handleDelete}
+                    properties={properties}
+                    handleEdit={handleEdit}
+                    handleDelete={handleDelete}
                 />
             </PageLayout>
         </>

@@ -1,6 +1,7 @@
-import {Box, Heading, Text, VStack} from "@chakra-ui/react";
+import {Box, Text, VStack} from "@chakra-ui/react";
 import {TenantsListProps} from "../../interfaces/tenantInterfaces.ts";
 import ListActionButtons from "./ListActionButtons.tsx";
+import ListTitle from "./ListTitle.tsx";
 
 const TenantsList = ({
                          title,
@@ -10,12 +11,7 @@ const TenantsList = ({
                      }: TenantsListProps) => {
     return (
         <>
-            <Heading
-                size="md"
-                mb={4}
-            >
-                {title}
-            </Heading>
+            <ListTitle title={title}/>
             <VStack align="stretch" spacing={4}>
                 {tenants.map(t => (
                     <Box
