@@ -107,18 +107,8 @@ const RentalContractsForm = ({
                         placeholder="Select a status"
                         sx={formInputStyle}
                     >
-                        <option
-                            value="active"
-                            style={formSelectStyle}
-                        >
-                            active
-                        </option>
-                        <option
-                            value="ended"
-                            style={formSelectStyle}
-                        >
-                            ended
-                        </option>
+                        <option value="active" style={formSelectStyle}>active</option>
+                        <option value="ended" style={formSelectStyle}>ended</option>
                     </Select>
                 </FormControl>
 

@@ -64,7 +64,7 @@ const TenantsPage = () => {
     return (
         <>
             <>
-                <PageLayout title={'👤 Tenants'}>
+                <PageLayout title={'Tenants'}>
                     <InnerPageLayout>
                         <DynamicForm
                             data={form}
@@ -75,7 +75,7 @@ const TenantsPage = () => {
                     </InnerPageLayout>
 
                     <TenantsList
-                        title={"📋 List of Tenants"}
+                        title={"👥 List Of Tenants"}
                         tenants={tenants}
                         handleEdit={handleEdit}
                         handleDelete={handleDelete}

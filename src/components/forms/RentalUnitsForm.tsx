@@ -1,7 +1,7 @@
 import {Checkbox, CheckboxGroup, FormControl, FormLabel, Input, Select, VStack} from "@chakra-ui/react";
 import {RentalUnisFormProps} from "../../interfaces/rentalUnitsInterfaces.ts";
 import FormActionButton from "./FormActionButton.tsx";
-import {formInputStyle, formLabelStyle, formVStackStyle} from "../../styles/FormComponentStyles.ts";
+import {formInputStyle, formLabelStyle, formSelectStyle, formVStackStyle} from "../../styles/FormComponentStyles.ts";
 
 const RentalUnitsForm = ({
                              form,
@@ -32,13 +32,13 @@ const RentalUnitsForm = ({
                         name="type"
                         value={form.type}
                         onChange={handleChange}
-                        sx={formInputStyle}
                         placeholder="Select a type"
+                        sx={formInputStyle}
                     >
-                        <option value="Flat">Flat</option>
-                        <option value="Office">Office</option>
-                        <option value="Shop">Shop</option>
-                        <option value="Penthouse">Penthouse</option>
+                        <option value="Flat" style={formSelectStyle}>Flat</option>
+                        <option value="Office" style={formSelectStyle}>Office</option>
+                        <option value="Shop" style={formSelectStyle}>Shop</option>
+                        <option value="Penthouse" style={formSelectStyle}>Penthouse</option>
                     </Select>
                 </FormControl>
 
@@ -92,8 +92,8 @@ const RentalUnitsForm = ({
                         placeholder="Select a status"
                         sx={formInputStyle}
                     >
-                        <option value="rented">rented</option>
-                        <option value="free">free</option>
+                        <option value="rented" style={formSelectStyle}>rented</option>
+                        <option value="free" style={formSelectStyle}>free</option>
                     </Select>
                 </FormControl>
 
@@ -107,7 +107,7 @@ const RentalUnitsForm = ({
                         sx={formInputStyle}
                     >
                         {tenants.map(t => (
-                            <option key={t.id} value={t.id}>
+                            <option key={t.id} value={t.id} style={formSelectStyle}>
                                 {t.first_name} {t.last_name}
                             </option>
                         ))}
@@ -124,7 +124,7 @@ const RentalUnitsForm = ({
                         sx={formInputStyle}
                     >
                         {properties.map((p) => (
-                            <option key={p.id} value={p.id}>
+                            <option key={p.id} value={p.id} style={formSelectStyle}>
                                 {p.name} – {p.city}
                             </option>
                         ))}

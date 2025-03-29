@@ -2,6 +2,12 @@ import {Box, Text, VStack} from "@chakra-ui/react";
 import {PaymentsListProps} from "../../interfaces/paymentsInterfaces.ts";
 import ListTitle from "./ListTitle.tsx";
 import ListActionButtons from "./ListActionButtons.tsx";
+import {
+    listComponentBoxStyle,
+    listComponentMainTextStyle,
+    listComponentTextStyle,
+    listComponentVStackStyle
+} from "../../styles/ListComponentStyles.ts";
 
 const PaymentsList = ({
                           title,
@@ -12,30 +18,25 @@ const PaymentsList = ({
     return (
         <>
             <ListTitle title={title}/>
-            <VStack align="stretch" spacing={4}>
+            <VStack sx={listComponentVStackStyle}>
                 {payments.map((p) => (
                     <Box
                         key={p.id}
-                        p={5}
-                        borderWidth="1px"
-                        borderRadius="lg"
-                        shadow="sm"
-                        bg="gray.50"
-                        _hover={{shadow: 'md'}}
+                        sx={listComponentBoxStyle}
                     >
-                        <Text fontWeight="bold" fontSize="lg" color="gray.800">
+                        <Text sx={listComponentMainTextStyle}>
                             💸 Payment of CHF {p.amount}
                         </Text>
-                        <Text fontSize="sm" color="gray.600">
+                        <Text sx={listComponentTextStyle}>
                             📅 Date: {p.date}
                         </Text>
-                        <Text fontSize="sm" color="gray.600">
+                        <Text sx={listComponentTextStyle}>
                             📄 Contract ID: {p.rental_contract}
                         </Text>
-                        <Text fontSize="sm" color="gray.600">
+                        <Text sx={listComponentTextStyle}>
                             ✅ Status: {p.status}
                         </Text>
-                        <Text fontSize="sm" color="gray.600">
+                        <Text sx={listComponentTextStyle}>
                             💳 Method: {p.payment_method}
                         </Text>
 

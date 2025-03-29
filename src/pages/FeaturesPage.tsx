@@ -66,7 +66,7 @@ const FeaturesPage = () => {
 
     return (
         <>
-            <PageLayout title="⚙️ Features">
+            <PageLayout title="Features">
                 <InnerPageLayout>
                     <DynamicForm
                         data={form}
@@ -77,7 +77,7 @@ const FeaturesPage = () => {
                 </InnerPageLayout>
 
                 <FeaturesList
-                    title={"📋 List of Tenants"}
+                    title={"✨ List Of Features"}
                     features={features}
                     handleEdit={handleEdit}
                     handleDelete={handleDelete}

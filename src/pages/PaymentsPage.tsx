@@ -88,7 +88,7 @@ const PaymentsPage = () => {
                 </InnerPageLayout>
 
                 <PaymentsList
-                    title="💵 Payments Overview"
+                    title="💵 List Of Payments"
                     payments={payments}
                     handleEdit={handleEdit}
                     handleDelete={handleDelete}

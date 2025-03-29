@@ -99,7 +99,7 @@ const RentalContractsPage = () => {
 
     return (
         <>
-            <PageLayout title={'📄 Rental Contracts'}>
+            <PageLayout title={'Rental Contracts'}>
                 <InnerPageLayout>
                     <RentalContractsForm
                         form={form}
@@ -112,7 +112,7 @@ const RentalContractsPage = () => {
                 </InnerPageLayout>
 
                 <RentalContractsList
-                    title={"📋 List of Rental Contracts"}
+                    title={"📑 List Of Rental Contracts"}
                     contracts={contracts}
                     handleEdit={handleEdit}
                     handleDelete={handleDelete}

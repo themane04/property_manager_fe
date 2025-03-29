@@ -72,7 +72,7 @@ const PropertiesPage = () => {
 
     return (
         <>
-            <PageLayout title={'🏢 Properties'}>
+            <PageLayout title={'Properties'}>
                 <InnerPageLayout>
                     <DynamicForm
                         data={form}
@@ -83,7 +83,7 @@ const PropertiesPage = () => {
                 </InnerPageLayout>
 
                 <PropertiesList
-                    title={"📋 List of Properties"}
+                    title={"🏘️ List Of Properties"}
                     properties={properties}
                     handleEdit={handleEdit}
                     handleDelete={handleDelete}

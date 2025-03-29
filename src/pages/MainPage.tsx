@@ -6,13 +6,14 @@ const MainPage = () => {
     const navigate = useNavigate()
 
     return (
-        <Box p={8}>
+        <Box p={20}>
             <Heading
                 mb={10}
                 fontSize="3xl"
                 textAlign="center"
+                color="teal.300"
             >
-                🏢 Property Manager Dashboard
+                Property Manager Dashboard
             </Heading>
             <SimpleGrid columns={[1, 2, 3]} spacing={6}>
                 {routes.map(({label, path, icon: Icon, color}) => (
