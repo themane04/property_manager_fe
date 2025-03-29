@@ -2,24 +2,30 @@ import {useToast,} from '@chakra-ui/react'
 import * as React from 'react'
 import {useEffect, useState} from 'react'
 import axios from 'axios'
-import {initialRequest} from "../utils/initialStateUtil.ts";
-import {showErrorToast, showSuccessToast} from "../utils/toastUtil.ts";
+import {Tenant} from "../interfaces/tenantInterfaces.ts";
+import {initialContract} from "../utils/initialStateUtil.ts";
+import {showErrorToast, showInfoToast, showSuccessToast} from "../utils/toastUtil.ts";
 import PageLayout from "../components/PageLayout.tsx";
 import InnerPageLayout from "../components/InnerPageLayout.tsx";
-import {MaintenanceRequest} from "../interfaces/maintenanceRequestInterfaces.ts";
+import {RentalContract} from "../interfaces/rentalContractsInterfaces.ts";
 import {RentalUnit} from "../interfaces/rental-units.interfaces.ts";
 import ItemList from "../components/UpdateDeleteButtons.tsx";
-import MaintenanceRequestsForm from "../components/forms/MaintenanceRequestsForm.tsx";
+import RentalContractsForm from "../components/forms/RentalContractsForm.tsx";
 
-const MaintenanceRequestsPage = () => {
-    const [requests, setRequests] = useState<MaintenanceRequest[]>([])
-    const [form, setForm] = useState(initialRequest)
+
+const RentalContractsPage = () => {
+    const [contracts, setContracts] = useState<RentalContract[]>([])
+    const [form, setForm] = useState(initialContract)
     const [editId, setEditId] = useState<string | null>(null)
+
+    const [tenants, setTenants] = useState<Tenant[]>([])
     const [rentalUnits, setRentalUnits] = useState<RentalUnit[]>([])
+
     const toast = useToast()
 
     const fetchAll = () => {
-        axios.get('http://localhost:8000/api/maintenance-requests').then((res) => setRequests(res.data))
+        axios.get('http://localhost:8000/api/rental-contracts').then((res) => setContracts(res.data))
+        axios.get('http://localhost:8000/api/tenants').then((res) => setTenants(res.data))
         axios.get('http://localhost:8000/api/rental-units').then((res) => setRentalUnits(res.data))
     }
 
@@ -32,16 +38,20 @@ const MaintenanceRequestsPage = () => {
     }
 
     const handleSubmit = () => {
-        const payload = {...form}
+        const payload = {
+            ...form,
+            rent: Number(form.rent),
+            deposit: Number(form.deposit),
+        }
 
         const action = editId
-            ? axios.patch(`http://localhost:8000/api/maintenance-requests/${editId}`, payload)
-            : axios.post('http://localhost:8000/api/maintenance-requests', payload)
+            ? axios.patch(`http://localhost:8000/api/rental-contracts/${editId}`, payload)
+            : axios.post('http://localhost:8000/api/rental-contracts', payload)
 
         action
             .then(() => {
-                showSuccessToast(toast, editId ? 'Anfrage aktualisiert' : 'Anfrage erstellt')
-                setForm(initialRequest)
+                showSuccessToast(toast, editId ? 'Vertrag aktualisiert' : 'Vertrag erstellt')
+                setForm(initialContract)
                 setEditId(null)
                 fetchAll()
             })
@@ -51,23 +61,24 @@ const MaintenanceRequestsPage = () => {
     }
 
     const handleDelete = (id: string) => {
-        axios.delete(`http://localhost:8000/api/maintenance-requests/${id}`).then(() => {
+        axios.delete(`http://localhost:8000/api/rental-contracts/${id}`).then(() => {
             fetchAll()
-            showSuccessToast(toast, 'Anfrage gelöscht')
+            showInfoToast(toast, 'Vertrag gelöscht')
         })
     }
 
-    const handleEdit = (r: MaintenanceRequest) => {
-        setForm({...r})
-        setEditId(r.id)
+    const handleEdit = (c: RentalContract) => {
+        setForm({...c})
+        setEditId(c.id)
     }
 
     return (
         <>
-            <PageLayout title={'🔧 Maintenance Requests'}>
+            <PageLayout title={'📄 Rental Contracts'}>
                 <InnerPageLayout>
-                    <MaintenanceRequestsForm
+                    <RentalContractsForm
                         form={form}
+                        tenants={tenants}
                         rentalUnits={rentalUnits}
                         handleChange={handleChange}
                         handleSubmit={handleSubmit}
@@ -76,8 +87,8 @@ const MaintenanceRequestsPage = () => {
                 </InnerPageLayout>
 
                 <ItemList
-                    title={"📋 List of Maintenance Requests"}
-                    data={requests}
+                    title={"📋 List of Rental Contracts"}
+                    data={contracts}
                     onEdit={handleEdit}
                     onDelete={handleDelete}
                 />
@@ -86,4 +97,4 @@ const MaintenanceRequestsPage = () => {
     )
 }
 
-export default MaintenanceRequestsPage
+export default RentalContractsPage

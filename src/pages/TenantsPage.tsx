@@ -1,13 +1,14 @@
-import {Button, FormControl, FormLabel, Input, useToast} from '@chakra-ui/react'
+import {useToast} from '@chakra-ui/react'
 import * as React from 'react'
 import {useEffect, useState} from 'react'
 import axios from 'axios'
-import {Tenant} from "../interfaces/tenant.interfaces.ts";
-import {initialTenant} from "../utils/initial-state.util.ts";
-import {showErrorToast, showInfoToast, showSuccessToast} from "../utils/toast.util.ts";
+import {Tenant} from "../interfaces/tenantInterfaces.ts";
+import {initialTenant} from "../utils/initialStateUtil.ts";
+import {showErrorToast, showInfoToast, showSuccessToast} from "../utils/toastUtil.ts";
 import PageLayout from "../components/PageLayout.tsx";
 import InnerPageLayout from "../components/InnerPageLayout.tsx";
 import ItemList from "../components/UpdateDeleteButtons.tsx";
+import DynamicForm from "../components/forms/DynamicForm.tsx";
 
 function TenantsPage() {
     const [tenants, setTenants] = useState<Tenant[]>([])
@@ -63,20 +64,12 @@ function TenantsPage() {
             <>
                 <PageLayout title={'👤 Tenants'}>
                     <InnerPageLayout>
-                        {Object.entries(form).map(([key, value]) => (
-                            <FormControl key={key} isRequired>
-                                <FormLabel textTransform="capitalize">{key}</FormLabel>
-                                <Input
-                                    name={key}
-                                    value={value}
-                                    onChange={handleChange}
-                                    bg="gray.50"
-                                />
-                            </FormControl>
-                        ))}
-                        <Button colorScheme="blue" size="lg" alignSelf="flex-start" onClick={handleSubmit}>
-                            {editId ? 'Update' : 'Create'}
-                        </Button>
+                        <DynamicForm
+                            data={form}
+                            onChange={handleChange}
+                            onSubmit={handleSubmit}
+                            submitLabel={editId ? 'Update' : 'Create'}
+                        />
                     </InnerPageLayout>
 
                     <ItemList

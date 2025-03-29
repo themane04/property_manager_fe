@@ -1,19 +1,14 @@
-import {
-    Button,
-    FormControl,
-    FormLabel,
-    Input,
-    useToast,
-} from '@chakra-ui/react'
+import {useToast,} from '@chakra-ui/react'
+import * as React from 'react'
 import {useEffect, useState} from 'react'
 import axios from 'axios'
-import {initialFeature} from "../utils/initial-state.util.ts";
-import {showErrorToast, showInfoToast, showSuccessToast} from "../utils/toast.util.ts";
+import {initialFeature} from "../utils/initialStateUtil.ts";
+import {showErrorToast, showInfoToast, showSuccessToast} from "../utils/toastUtil.ts";
 import PageLayout from "../components/PageLayout.tsx";
-import * as React from "react";
 import InnerPageLayout from "../components/InnerPageLayout.tsx";
-import {Feature} from "../interfaces/features.interfaces.ts";
+import {Feature} from "../interfaces/featuresInterfaces.ts";
 import ItemList from "../components/UpdateDeleteButtons.tsx";
+import DynamicForm from "../components/forms/DynamicForm.tsx";
 
 const FeaturesPage = () => {
     const [features, setFeatures] = useState<Feature[]>([])
@@ -68,13 +63,12 @@ const FeaturesPage = () => {
         <>
             <PageLayout title="⚙️ Features">
                 <InnerPageLayout>
-                    <FormControl isRequired>
-                        <FormLabel>Name</FormLabel>
-                        <Input name="name" value={form.name} onChange={handleChange}/>
-                    </FormControl>
-                    <Button colorScheme="blue" onClick={handleSubmit}>
-                        {editId ? 'Aktualisieren' : 'Erstellen'}
-                    </Button>
+                    <DynamicForm
+                        data={form}
+                        onChange={handleChange}
+                        onSubmit={handleSubmit}
+                        submitLabel={editId ? 'Update' : 'Create'}
+                    />
                 </InnerPageLayout>
 
                 <ItemList

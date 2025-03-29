@@ -1,10 +1,10 @@
-import {Tenant} from "../interfaces/tenant.interfaces.ts";
-import {Property} from "../interfaces/properties.interfaces.ts";
-import {Feature} from "../interfaces/features.interfaces.ts";
+import {Tenant} from "../interfaces/tenantInterfaces.ts";
+import {Property} from "../interfaces/propertiesInterfaces.ts";
+import {Feature} from "../interfaces/featuresInterfaces.ts";
 import {RentalUnit} from "../interfaces/rental-units.interfaces.ts";
-import {RentalContract} from "../interfaces/contracts.interfaces.ts";
-import {Payment} from "../interfaces/payments.interfaces.ts";
-import {MaintenanceRequest} from "../interfaces/maintenance-request.interfaces.ts";
+import {RentalContract} from "../interfaces/rentalContractsInterfaces.ts";
+import {Payment} from "../interfaces/paymentsInterfaces.ts";
+import {MaintenanceRequest} from "../interfaces/maintenanceRequestInterfaces.ts";
 
 export const initialTenant: Omit<Tenant, 'id'> = {
     first_name: '',

@@ -1,5 +1,5 @@
 import {Box, Button, Heading, HStack, Text, VStack} from '@chakra-ui/react';
-import {ItemListProps} from "../interfaces/common.interfaces.ts";
+import {ItemListProps} from "../interfaces/commonInterfaces.ts";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const ItemList = ({title, data, onEdit, onDelete}: ItemListProps<any>) => {

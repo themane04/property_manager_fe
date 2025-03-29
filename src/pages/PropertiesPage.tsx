@@ -1,19 +1,14 @@
-import {
-    Button,
-    FormControl,
-    FormLabel,
-    Input,
-    useToast,
-} from '@chakra-ui/react'
+import {useToast,} from '@chakra-ui/react'
+import * as React from 'react'
 import {useEffect, useState} from 'react'
 import axios from 'axios'
-import {initialProperty} from "../utils/initial-state.util.ts";
-import {showErrorToast, showInfoToast, showSuccessToast} from "../utils/toast.util.ts";
+import {initialProperty} from "../utils/initialStateUtil.ts";
+import {showErrorToast, showInfoToast, showSuccessToast} from "../utils/toastUtil.ts";
 import PageLayout from "../components/PageLayout.tsx";
-import * as React from "react";
 import InnerPageLayout from "../components/InnerPageLayout.tsx";
-import {Property} from "../interfaces/properties.interfaces.ts";
+import {Property} from "../interfaces/propertiesInterfaces.ts";
 import ItemList from "../components/UpdateDeleteButtons.tsx";
+import DynamicForm from "../components/forms/DynamicForm.tsx";
 
 const PropertiesPage = () => {
     const [properties, setProperties] = useState<Property[]>([])
@@ -75,15 +70,12 @@ const PropertiesPage = () => {
         <>
             <PageLayout title={'🏢 Properties'}>
                 <InnerPageLayout>
-                    {Object.entries(form).map(([key, value]) => (
-                        <FormControl key={key} isRequired>
-                            <FormLabel textTransform="capitalize">{key.replace('_', ' ')}</FormLabel>
-                            <Input name={key} value={value} onChange={handleChange}/>
-                        </FormControl>
-                    ))}
-                    <Button colorScheme="blue" onClick={handleSubmit}>
-                        {editId ? 'Update' : 'Create'}
-                    </Button>
+                    <DynamicForm
+                        data={form}
+                        onChange={handleChange}
+                        onSubmit={handleSubmit}
+                        submitLabel={editId ? 'Update' : 'Create'}
+                    />
                 </InnerPageLayout>
 
                 <ItemList

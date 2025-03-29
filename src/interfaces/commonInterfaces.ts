@@ -1,3 +1,12 @@
+import {ChangeEvent} from "react";
+
+export interface DynamicFormProps<T extends Record<string, any>> {
+    data: T;
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    onSubmit: () => void;
+    submitLabel?: string;
+}
+
 export interface BaseItem {
     id: string | number;
     name: string;

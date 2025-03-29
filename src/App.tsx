@@ -1,10 +1,10 @@
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import TenantsPage from './pages/TenantsPage'
 import MainPage from './pages/MainPage'
 import PropertiesPage from "./pages/PropertiesPage.tsx";
 import FeaturesPage from "./pages/FeaturesPage.tsx";
-import RentalUnitsPage from "./pages/RentalUnits.tsx";
-import RentalContracts from "./pages/RentalContracts.tsx";
+import RentalUnitsPage from "./pages/RentalUnitsPage.tsx";
+import RentalContracts from "./pages/RentalContractsPage.tsx";
 import PaymentsPage from "./pages/PaymentsPage.tsx";
 import MaintenanceRequestsPage from "./pages/MaintenanceRequestsPage.tsx";
 

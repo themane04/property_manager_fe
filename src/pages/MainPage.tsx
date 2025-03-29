@@ -1,6 +1,6 @@
 import {Button, SimpleGrid} from '@chakra-ui/react'
 import {useNavigate} from 'react-router-dom'
-import {routes} from "../interfaces/routes.service.ts";
+import {routes} from "../interfaces/routesService.ts";
 import PageLayout from "../components/PageLayout.tsx";
 
 const MainPage = () => {
