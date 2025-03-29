@@ -1,12 +1,10 @@
-import {
-    Contract,
-    Feature,
-    MaintenanceRequest,
-    Payment,
-    Property,
-    RentalUnit,
-    Tenant
-} from "../interfaces/tenant.interfaces.ts";
+import {Tenant} from "../interfaces/tenant.interfaces.ts";
+import {Property} from "../interfaces/properties.interfaces.ts";
+import {Feature} from "../interfaces/features.interfaces.ts";
+import {RentalUnit} from "../interfaces/rental-units.interfaces.ts";
+import {RentalContract} from "../interfaces/contracts.interfaces.ts";
+import {Payment} from "../interfaces/payments.interfaces.ts";
+import {MaintenanceRequest} from "../interfaces/maintenance-request.interfaces.ts";
 
 export const initialTenant: Omit<Tenant, 'id'> = {
     first_name: '',
@@ -49,7 +47,7 @@ export const initialUnit: Omit<RentalUnit, 'id'> = {
     features: [],
 }
 
-export const initialContract: Omit<Contract, 'id'> = {
+export const initialContract: Omit<RentalContract, 'id'> = {
     tenant: '',
     rental_unit: '',
     start_of_contract: '',
