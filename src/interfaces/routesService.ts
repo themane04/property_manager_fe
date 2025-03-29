@@ -1,30 +1,47 @@
-export const routes = [
+import {FaBuilding, FaFileContract, FaHome, FaMoneyBillWave, FaStar, FaTools, FaUsers} from "react-icons/fa";
+import {RoutesProps} from "./commonInterfaces.ts";
+
+export const routes: RoutesProps[] = [
     {
         label: 'Tenants',
-        path: '/tenants'
+        path: '/tenants',
+        icon: FaUsers,
+        color: 'blue',
     },
     {
         label: 'Properties',
-        path: '/properties'
+        path: '/properties',
+        icon: FaBuilding,
+        color: 'green',
     },
     {
         label: 'Features',
-        path: '/features'
+        path: '/features',
+        icon: FaStar,
+        color: 'orange',
     },
     {
         label: 'Rental Units',
-        path: '/rental-units'
+        path: '/rental-units',
+        icon: FaHome,
+        color: 'teal',
     },
     {
         label: 'Rental Contracts',
-        path: '/rental-contracts'
+        path: '/rental-contracts',
+        icon: FaFileContract,
+        color: 'purple',
     },
     {
         label: 'Payments',
-        path: '/payments'
+        path: '/payments',
+        icon: FaMoneyBillWave,
+        color: 'pink',
     },
     {
         label: 'Maintenance Requests',
-        path: '/maintenance-requests'
+        path: '/maintenance-requests',
+        icon: FaTools,
+        color: 'red',
     },
 ]

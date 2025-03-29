@@ -1,5 +1,14 @@
 import {ChangeEvent} from "react";
 
+import {IconType} from "react-icons";
+
+export interface RoutesProps {
+    label: string
+    path: string
+    icon: IconType;
+    color: string
+}
+
 export interface ListActionButtonsProps<T extends { id: string }> {
     item: T;
     handleEdit: (item: T) => void;
