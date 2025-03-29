@@ -55,17 +55,34 @@ ease.
 
 ---
 
-## 🧪 Running the Frontend Locally
+## 🐳 Installation (With Docker)
 
 ```bash
-# 1. Clone the repo
+# Clone the repo
 git clone https://github.com/themane04/property_manager_fe.git
-
-# 2. Navigate into the folder
 cd property_manager_fe
 
-# 3. Install dependencies
+# Start the frontend container
+docker compose up -d
+
+# Stop containers
+docker compose down
+```
+- The frontend will be available at: [`http://localhost:3000`](http://localhost:3000)
+
+## 📦 Installation (Without Docker)
+
+```bash
+# Clone the repo
+git clone https://github.com/themane04/property_manager_fe.git
+
+# Navigate into the folder
+cd property_manager_fe
+
+# Install dependencies
 npm install
 
-# 4. Start the dev server
+# Start the dev server
 npm run dev
+```
+- The frontend will be available at: [`http://localhost:5173`](http://localhost:5173)
